@@ -68,7 +68,7 @@ function getRhyme(word, callback) {
 
   request({
     uri: 'https://api.datamuse.com/words',
-    qs:{rel_rhy: word},
+    qs:{ml: word, rel_rhy: word},
     method: 'GET',
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
