@@ -74,7 +74,7 @@ function getRhyme(word, callback) {
       if (!error && response.statusCode == 200) {
 
         console.log("Successfully got rhyme, " + body + (typeof body));
-        callback();
+        callback(JSON.parse(body)[0].word);
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
@@ -124,8 +124,8 @@ function receivedMessage(event) {
   }
 
 
-  getRhyme("word", function(){
-    console.log('callback');
+  getRhyme("word", function(rhyme){
+    console.log('callback: ' + rhyme);
   });
   // console.log(getRhyme("word")[0].body);
 
