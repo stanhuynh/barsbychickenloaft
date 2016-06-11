@@ -17,19 +17,29 @@ app.get('/webhook', function(req, res){
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
-  // Make sure this is a page subscription
+  // Make sure this is a page subscr.iption
   if (data.object == 'page') {
+    console.log('Data Entry: '+JSON.stringify(data.entry));
+
+    var entry = data.entry[data.entry.length-1];
+
+    console.log('Messaging: '+JSON.stringify(entry.messaging));
+
+    receivedMessage(entry.messaging[entry.messaging.length-1]);
+
+
+
     // Iterate over each entry
     // There may be multiple if batched
-    data.entry.forEach(function(pageEntry) {
-      var pageID = pageEntry.id;
-      var timeOfEvent = pageEntry.time;
-
-      console.log(JSON.stringify(pageEntry.messaging));
-      var length = pageEntry.messaging.length;
-
-      receivedMessage(pageEntry.messaging[length-1]);
-    });
+    // data.entry.forEach(function(pageEntry) {
+    //   var pageID = pageEntry.id;
+    //   var timeOfEvent = pageEntry.time;
+    //
+    //   console.log(JSON.stringify(pageEntry.messaging));
+    //   var length = pageEntry.messaging.length;
+    //
+    //   receivedMessage(pageEntry.messaging[length-1]);
+    // });
 
     // Assume all went well.
     //
@@ -72,7 +82,7 @@ function receivedMessage(event) {
 
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: process.env.PAGE_ACCESS_TOKEN,
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: 'POST',
     json: json
   }, function (error, response, body) {
