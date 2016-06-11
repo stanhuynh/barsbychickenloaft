@@ -74,7 +74,7 @@ function getRhyme(word) {
       if (!error && response.statusCode == 200) {
 
         console.log("Successfully got rhyme");
-        return (body[0].word);
+        return JSON.stringify(body[0].word);
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
