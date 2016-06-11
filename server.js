@@ -64,10 +64,10 @@ app.post('/webhook', function (req, res) {
  *
  */
 function receivedMessage(event) {
-  var senderID = event.sender.id;
-  var recipientID = event.recipient.id;
-  var timeOfMessage = event.timestamp;
-  var message = event.message;
+  var senderID = event[0].sender.id;
+  var recipientID = event[0].recipient.id;
+  var timeOfMessage = event[0].timestamp;
+  var message = event[0].message;
   var text = message.text;
 
   console.log("Received message for user %d and page %d at %d with message:",
