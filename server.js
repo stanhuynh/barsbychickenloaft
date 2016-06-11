@@ -25,10 +25,12 @@ app.post('/webhook', function (req, res) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
 
-      var last_entry = pageEntry.messaging.length - 1;
+      console.log('dfng'+pageEntry.messaging);
+
+      // var last_entry = pageEntry.messaging.length - 1;
 
       // get last entrys
-      receivedMessage(pageEntry.messaging.messaging[last_entry]);
+      // receivedMessage(pageEntry.messaging.messaging[last_entry]);
 
       // Iterate over each messaging event
       // pageEntry.messaging.forEach(function(messagingEvent) {
