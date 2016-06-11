@@ -99,6 +99,7 @@ function receivedMessage(event) {
     var stringArray = messageText.split(" ");
     var lastWord = stringArray[stringArray.length-1];
 
+
     getRhyme(lastWord, function(rhyme){
       console.log('callback: ' + rhyme);
 
