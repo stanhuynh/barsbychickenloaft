@@ -64,7 +64,7 @@ app.post('/webhook', function (req, res) {
  * then we'll simply confirm that we've received the attachment.
  *
  */
-function getRhyme(word) {
+function getRhyme(word, callback) {
 
   request({
     uri: 'https://api.datamuse.com/words',
@@ -74,7 +74,7 @@ function getRhyme(word) {
       if (!error && response.statusCode == 200) {
 
         console.log("Successfully got rhyme, " + body + (typeof body));
-        return body;
+        callback();
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
