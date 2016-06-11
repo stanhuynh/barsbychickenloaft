@@ -64,6 +64,25 @@ app.post('/webhook', function (req, res) {
  * then we'll simply confirm that we've received the attachment.
  *
  */
+function getRhyme(word) {
+
+  request({
+    uri: 'https://api.datamuse.com/words',
+    qs:{rel_rhy: word},
+    method: GET,
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        console.log("Successfully got rhyme");
+      } else {
+        console.error("Unable to get rhyme.");
+        console.error(response);
+        console.error(error);
+      }
+    });
+}
+
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -102,6 +121,9 @@ function receivedMessage(event) {
   } else {
     console.error('damn dawg');
   }
+
+
+  getRhyme("word");
 
 
   // console.log(JSON.stringify(message));
