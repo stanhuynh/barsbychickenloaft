@@ -72,9 +72,9 @@ function getRhyme(word, callback) {
     method: 'GET',
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-
-        // console.log("Successfully got rhyme, " + body + (typeof body));
-        callback(JSON.parse(body)[0].word);
+        // Check to make sure there are rhymes to the last word
+        if(body != null)
+          callback(JSON.parse(body)[0].word);
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
