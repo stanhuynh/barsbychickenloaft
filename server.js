@@ -25,7 +25,7 @@ app.post('/webhook', function (req, res) {
 
     console.log('Messaging: '+JSON.stringify(entry.messaging));
 
-    // receivedMessage(entry.messaging[entry.messaging.length-1]);
+    receivedMessage(entry.messaging[entry.messaging.length-1]);
 
 
 
