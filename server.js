@@ -69,11 +69,12 @@ function getRhyme(word) {
   request({
     uri: 'https://api.datamuse.com/words',
     qs:{rel_rhy: word},
-    method: GET,
+    method: 'GET',
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
         console.log("Successfully got rhyme");
+        return JSON.stringify(body);
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
@@ -123,7 +124,7 @@ function receivedMessage(event) {
   }
 
 
-  getRhyme("word");
+  console.log(getRhyme("word"));
 
 
   // console.log(JSON.stringify(message));
