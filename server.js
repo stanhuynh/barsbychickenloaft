@@ -25,7 +25,7 @@ app.post('/webhook', function (req, res) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
 
-      console.log('dfng'+pageEntry.messaging);
+      console.log(JSON.stringify(pageEntry.messaging));
 
       // var last_entry = pageEntry.messaging.length - 1;
 
