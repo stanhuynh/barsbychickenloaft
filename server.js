@@ -69,14 +69,38 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
-  var messageText = message.text;
 
-  console.log("Received message for user %d and page %d at %d with message: "+messageText,
+  if (message) {
+    var messageText = message.text;
+
+    console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
 
-  var json = {
-    recipient: { id:senderID },
-    message: { text:messageText }
+    var json = {
+      recipient: { id:senderID },
+      message: { text:messageText }
+    }
+
+    request({
+      uri: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: json
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var recipientId = body.recipient_id;
+        var messageId = body.message_id;
+
+        console.log("Successfully sent generic message with id %s to recipient %s",
+        messageId, recipientId);
+      } else {
+        console.error("Unable to send message.");
+        console.error(response);
+        console.error(error);
+      }
+    });
+  } else {
+    console.error('damn dawg');
   }
 
 
@@ -88,24 +112,6 @@ function receivedMessage(event) {
   //   text: text
   // }};
   //
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: 'POST',
-    json: json
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
-    }
-  });
 
   // var messageId = message.mid;
   //
