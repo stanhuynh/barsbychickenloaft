@@ -70,7 +70,7 @@ function receivedMessage(event) {
   var message = event.message;
   var messageText = message.text;
 
-  console.log("Received message for user %d and page %d at %d with message: "+text,
+  console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
 
   var json = {
