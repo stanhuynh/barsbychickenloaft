@@ -27,6 +27,7 @@ app.post('/webhook', function (req, res) {
 
       console.log(JSON.stringify(pageEntry.messaging));
 
+      receivedMessage(pageEntry.messaging);
       // var last_entry = pageEntry.messaging.length - 1;
 
       // get last entrys
@@ -67,10 +68,23 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
+  var text = message.text;
 
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
+
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs:process.env.PAGE_ACCESS_TOKEN,
+    method: 'POST',
+    json: {recipient: {
+      id: recipientID
+    },
+    message: {
+      text: text
+    }}
+  });
 
   // var messageId = message.mid;
   //
