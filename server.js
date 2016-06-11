@@ -92,17 +92,14 @@ function receivedMessage(event) {
 
   if (message) {
     var messageText = message.text;
+    var stringArray = messageText.split(" ");
+    var lastWord = stringArray[stringArray.length-1];
 
     console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
 
-    var stringArray = messageText.split(" ");
-    var lastWord = stringArray[stringArray.length-1];
-
-
-    getRhyme(lastWord, function(rhyme){
+    var rhymes = function(rhyme) {
       console.log('callback: ' + rhyme);
-
 
       var json = {
         recipient: { id:senderID },
@@ -128,53 +125,12 @@ function receivedMessage(event) {
           console.error(error);
         }
       });
-    });
+    };
 
-    // request({
-    //   uri: 'https://graph.facebook.com/v2.6/me/messages',
-    //   qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    //   method: 'POST',
-    //   json: json
-    // }, function (error, response, body) {
-    //   if (!error && response.statusCode == 200) {
-    //     var recipientId = body.recipient_id;
-    //     var messageId = body.message_id;
-    //
-    //     console.log("Successfully sent generic message with id %s to recipient %s",
-    //     messageId, recipientId);
-    //
-    //   } else {
-    //     console.error("Unable to send message.");
-    //     console.error(response);
-    //     console.error(error);
-    //   }
-    // });
+    getRhyme(lastWord, rhymes);
   } else {
     console.error('damn dawg');
   }
-
-
-  // getRhyme("word", function(rhyme){
-  //   console.log('callback: ' + rhyme);
-  // });
-  // console.log(getRhyme("word")[0].body);
-
-
-  // console.log(JSON.stringify(message));
-  // var json = {recipient: {
-  //   id: recipientID
-  // },
-  // message: {
-  //   text: text
-  // }};
-  //
-
-  // var messageId = message.mid;
-  //
-  // // You may get a text or attachment but not both
-  // var messageText = message.text;
-  // var messageAttachments = message.attachments;
-
 }
 
 app.listen(process.env.PORT);
