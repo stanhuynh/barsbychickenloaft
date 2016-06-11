@@ -73,7 +73,7 @@ function getRhyme(word) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
-        console.log("Successfully got rhyme, " + body);
+        console.log("Successfully got rhyme, " + body + (typeof body));
         return body;
       } else {
         console.error("Unable to get rhyme.");
@@ -124,7 +124,9 @@ function receivedMessage(event) {
   }
 
 
-  console.log("tryna get rhyme: " + getRhyme("word"));
+  getRhyme("word", function(){
+    console.log('callback');
+  });
   // console.log(getRhyme("word")[0].body);
 
 
