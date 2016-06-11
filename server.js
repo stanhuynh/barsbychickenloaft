@@ -25,12 +25,17 @@ app.post('/webhook', function (req, res) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
 
+      var last_entry = pageEntry.messaging.length;
+
+      // get last entrys
+      receivedMessage(pageEntry.messaging.messaging[last_entry]);
+
       // Iterate over each messaging event
-      pageEntry.messaging.forEach(function(messagingEvent) {
-        if (messagingEvent.message) {
-          receivedMessage(messagingEvent);
-        }
-      });
+      // pageEntry.messaging.forEach(function(messagingEvent) {
+      //   if (messagingEvent.message) {
+      //     receivedMessage(messagingEvent);
+      //   }
+      // });
     });
 
     // Assume all went well.
