@@ -73,7 +73,7 @@ function getRhyme(word, callback) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         // Check to make sure there are rhymes to the last word
-        if(body != null)
+        if(body !== null)
           callback(JSON.parse(body)[0].word);
       } else {
         console.error("Unable to get rhyme.");
