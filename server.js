@@ -47,7 +47,8 @@ db.once('open', function() {
   verbs = mongoose.model('verbs', verbSchema);
   adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
-  categoriesCompare = mongoosge.model('nouns', categoriesCompareSchema);
+
+  categoriesCompare = mongoosge.model('categoriesCompare', categoriesCompareSchema);
 });
 
 app.use(bodyparser.json());
