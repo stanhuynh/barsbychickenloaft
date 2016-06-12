@@ -20,6 +20,8 @@ db.once('open', function() {
     type: String
   });
 
+  categoriesCompareSchema.set('collection', 'categoriesCompare');
+
   nounSchema = new Schema({
     name: String,
     type: String
