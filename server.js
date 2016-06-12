@@ -46,9 +46,15 @@ db.once('open', function() {
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
+  nounSchema.methods.getAll = function (cb) {
+    return this.model('nouns').find({}, cb);
+  }
   verbSchema.methods.findSimilarTypes = function (cb) {
     return this.model('verbs').find({ type: this.type}, cb);
   };
+  verbSchema.methods.getAll = function (cb) {
+    return this.model('verbs').find({}, cb);
+  }
   adjectiveSchema.methods.getAll = function (cb) {
     return this.model('adjectives').find({}, cb);
   }
@@ -191,32 +197,48 @@ function fillTemplate(template, category, cb) {
       case '0':
         console.log("insert noun");
         var n;
-        if(category === 'undefined')
+        if(category === 'undefined'){
           n = new nouns({})
-        else
+          n.getAll(function(err, li) {
+            // filter here
+            var item = li[Math.floor(Math.random() * li.length - 1)];
+            console.log(item);
+            template.text[template.index[loop.iteration()]] = item.name;
+            loop.next();
+          });
+        } else {
           n = new nouns({type: category});
-        n.findSimilarTypes(function(err, li) {
-          // filter here
-          var item = li[Math.floor(Math.random() * li.length - 1)];
-          console.log(item);
-          template.text[template.index[loop.iteration()]] = item.name;
-          loop.next();
-        });
+          n.findSimilarTypes(function(err, li) {
+            // filter here
+            var item = li[Math.floor(Math.random() * li.length - 1)];
+            console.log(item);
+            template.text[template.index[loop.iteration()]] = item.name;
+            loop.next();
+          });
+        }
         break;
       case '1':
         console.log("insert verb");
         var v;
-        if(category === undefined)
-          v = new nouns({});
-        else
+        if(category === undefined) {
+          v = new verbs({});
+          v.getAll(function(err, li) {
+            // filter here
+            var item = li[Math.floor(Math.random() * li.length - 1)];
+            console.log(item);
+            template.text[template.index[loop.iteration()]] = item.name;
+            loop.next();
+          });
+        } else {
           v= new verbs({type: category});
-        v.findSimilarTypes(function(err, li) {
-          // filter here
-          var item = li[Math.floor(Math.random() * li.length - 1)];
-          console.log(item);
-          template.text[template.index[loop.iteration()]] = item.name;
-          loop.next();
-        });
+          v.findSimilarTypes(function(err, li) {
+            // filter here
+            var item = li[Math.floor(Math.random() * li.length - 1)];
+            console.log(item);
+            template.text[template.index[loop.iteration()]] = item.name;
+            loop.next();
+          });
+        }
         break;
       case '2':
         console.log("insert adjective");
