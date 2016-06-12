@@ -113,7 +113,7 @@ var getWordType = function(word, callback){
 };
 
 //
-var spitLine = function(lineLength){
+var spitLine = function(lineLength, cb){
   // Pick at random which line from our preset templates to use
   var instance = new templates({length: lineLength});
 
@@ -124,7 +124,7 @@ var spitLine = function(lineLength){
     sentence = sentences[rannum];
     // console.log('Sentence: '+ JSON.stringify(sentence));
 
-    return sentence;
+    cb(sentence;);
   });
 
 }
@@ -188,17 +188,19 @@ function receivedMessage(event) {
     var lastWord = stringArray[stringArray.length-1];
     var wordCount = stringArray.length-1;
 
-    var sentence = spitLine(stringArray.length);
-    console.log('Sentence: '+ JSON.stringify(sentence));
+    spitLine(stringArray.length, function (sentence) {
+      console.log('Sentence: '+ JSON.stringify(sentence));
 
+      console.log("Received message for user %d and page %d at %d with message: "+messageText,
+      senderID, recipientID, timeOfMessage);
 
-    console.log("Received message for user %d and page %d at %d with message: "+messageText,
-    senderID, recipientID, timeOfMessage);
-
-    // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getWordType(lastWord, function(category){
-      getRhyme(senderID, lastWord, category, sendRhymeToUser);
+      // This will get rhyme from datamuse and call callback sendRhymeToUser
+      getWordType(lastWord, function(category){
+        getRhyme(senderID, lastWord, category, sendRhymeToUser);
+      });
     });
+
+
   } else {
     console.error('damn dawg');
   }
