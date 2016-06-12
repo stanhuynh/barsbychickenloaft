@@ -124,7 +124,7 @@ var spitLine = function(lineLength, cb){
     sentence = sentences[rannum];
     // console.log('Sentence: '+ JSON.stringify(sentence));
 
-    cb(sentence;);
+    cb(sentence);
   });
 
 }
