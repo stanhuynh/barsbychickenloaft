@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
 var request = require('request');
+var mongoose = require('mongoose');
+
+var user = process.env.USER;
+var pass = process.env.PASS;
+
+mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 
 app.use(bodyparser.json());
 
@@ -32,7 +38,7 @@ app.post('/webhook', function (req, res) {
 var getRhyme = function(senderID, word, callback) {
   request({
     uri: 'https://api.datamuse.com/words',
-    qs:{ml: word, rel_rhy: word},
+    qs:{rel_rhy: word},
     method: 'GET',
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
