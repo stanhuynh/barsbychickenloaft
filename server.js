@@ -145,7 +145,7 @@ var getRhyme = function(senderID, word, category, template, callback) {
             var json = JSON.parse(body);
             var word = json[Math.floor(Math.random()*(json.length-1))].word;
 
-            template.text.append(word);
+            template.text.push(word);
             var bar = template.text.join(' ');
 
 
