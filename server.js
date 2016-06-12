@@ -228,8 +228,8 @@ function fillTemplate(template, category, cb) {
 
 
   },
-  function(){console.log('cycle ended');  console.log(template);
-    return template;}
+  function(){console.log('cycle ended');
+    cb(template);}
 );
 
 
@@ -298,8 +298,8 @@ function receivedMessage(event) {
 
       // This will get rhyme from datamuse and call callback sendRhymeToUser
       getWordType(lastWord, function(category){
-        fillTemplate(sentence, category, function() {
-
+        fillTemplate(sentence, category, function(template) {
+          console.log(template);
           getRhyme(senderID, lastWord, category, sendRhymeToUser);
         });
       });
