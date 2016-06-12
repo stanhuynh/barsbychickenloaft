@@ -49,6 +49,9 @@ db.once('open', function() {
   verbSchema.methods.findSimilarTypes = function (cb) {
     return this.model('verbs').find({ type: this.type}, cb);
   };
+  adjectiveSchema.methods.getALl = function (cb) {
+    return this.model('adjectives').find({}, cb);
+  }
 
   // assign a function to the "methods" object of our animalSchema
   categoriesCompareSchema.methods.findSimilarNames = function (cb) {
@@ -176,6 +179,46 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
   });
 };
 
+function fillTemplate(template, category, cb) {
+  //pull template from db
+  for each (var i in template.index) {
+    switch(i) {
+      case 0:
+        console.log("insert noun");
+        var n;
+        if(category === undefined)
+          n = new nouns({})
+        else
+          n = new nouns({type: category});
+        n.findSimilarTypes(function(err, li) {
+          // filter here
+          console.log(li);
+        });
+        break;
+      case 1:
+        console.log("insert verb");
+        var v;
+        if(category === undefined)
+          v = new nouns({});
+        else
+          v= new verbs({type: category});
+        v.findSimilarTypes(function(err, li) {
+          // filter here
+          console.log(li);
+        });
+        break;
+      case 2:
+        console.log("insert adjective");
+        var a = new adjectives();
+        a.getAll(function(err, li) {
+console.log(li);
+        });
+        break;
+    }
+  }
+  return newTemplateString
+}
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -196,6 +239,7 @@ function receivedMessage(event) {
 
       // This will get rhyme from datamuse and call callback sendRhymeToUser
       getWordType(lastWord, function(category){
+        fillTemplate(sentence, category);
         getRhyme(senderID, lastWord, category, sendRhymeToUser);
       });
     });
