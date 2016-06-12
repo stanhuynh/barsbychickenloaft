@@ -31,8 +31,7 @@ db.once('open', function() {
   });
 
   adjectiveSchema = new Schema({
-    name: String,
-    type: String
+    name: String
   });
 
   // assign a function to the "methods" object of our animalSchema
@@ -46,6 +45,7 @@ db.once('open', function() {
 
   categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.model('categoriesCompare').find({ name: new RegExp(name, 'i') }, cb);
+
   };
 
   verbs = mongoose.model('verbs', verbSchema);
@@ -91,8 +91,6 @@ var getWordType = function(word, callback){
 };
 
 var getRhyme = function(senderID, word, callback) {
-  getWordType(word, function(){
-
 
     request({
       uri: 'https://api.datamuse.com/words',
@@ -113,7 +111,7 @@ var getRhyme = function(senderID, word, callback) {
       });
 
 
-  });
+  // });
 
 }
 
@@ -156,7 +154,9 @@ function receivedMessage(event) {
     senderID, recipientID, timeOfMessage);
 
     // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getRhyme(senderID, lastWord, sendRhymeToUser);
+    getWordType(lastWord, function(){
+      getRhyme(senderID, lastWord, sendRhymeToUser);
+    });
   } else {
     console.error('damn dawg');
   }
