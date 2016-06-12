@@ -81,6 +81,7 @@ var getWordType = function(word, callback){
   console.log('before find '+ word);
   categoriesCompare.findByName(function (err, categoryFound) {
     console.log(categoryFound);
+    callback();
   });
 };
 
