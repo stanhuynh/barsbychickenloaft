@@ -49,7 +49,7 @@ db.once('open', function() {
   verbSchema.methods.findSimilarTypes = function (cb) {
     return this.model('verbs').find({ type: this.type}, cb);
   };
-  adjectiveSchema.methods.getALl = function (cb) {
+  adjectiveSchema.methods.getAll = function (cb) {
     return this.model('adjectives').find({}, cb);
   }
 
