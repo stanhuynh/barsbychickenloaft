@@ -197,7 +197,7 @@ function fillTemplate(template, category, cb) {
           n = new nouns({type: category});
         n.findSimilarTypes(function(err, li) {
           // filter here
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          var item = li[Math.floor(Math.random() * li.length - 1)];
           console.log(item);
           template.text[template.index[loop.iteration()]] = item.name;
           loop.next();
@@ -212,7 +212,7 @@ function fillTemplate(template, category, cb) {
           v= new verbs({type: category});
         v.findSimilarTypes(function(err, li) {
           // filter here
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          var item = li[Math.floor(Math.random() * li.length - 1)];
           console.log(item);
           template.text[template.index[loop.iteration()]] = item.name;
           loop.next();
@@ -222,7 +222,7 @@ function fillTemplate(template, category, cb) {
         console.log("insert adjective");
         var a = new adjectives();
         a.getAll(function(err, li) {
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          var item = li[Math.floor(Math.random() * li.length - 1)];
           console.log(item);
           template.text[template.index[loop.iteration()]] = item.name;
           loop.next();
