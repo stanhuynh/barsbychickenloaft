@@ -37,6 +37,7 @@ var getRhyme = function(senderID, word, callback) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         // Check to make sure there are rhymes to the last word
+        console.log(JSON.parse(body)[0].word);
         if(body !== undefined || body !== null)
           callback(senderID, JSON.parse(body)[0].word);
       } else {
