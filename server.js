@@ -44,7 +44,7 @@ app.use(bodyparser.json());
 app.get('/', function(req, res){
   res.send('hello world');
   db.once('open', function() {
-    Noun.find({type:'Food'}, display_results);
+    Noun.find({type:'foods'}, display_results);
   });
 });
 
