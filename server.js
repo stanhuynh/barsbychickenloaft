@@ -42,6 +42,11 @@ db.once('open', function() {
     return this.model('verbs').find({ type: this.type}, cb);
   };
 
+  // assign a function to the "methods" object of our animalSchema
+  categoriesCompareSchema.methods.findSimilarNames = function (cb) {
+    return this.model('categoriesCompare').find({ name: this.name }, cb);
+  }
+
   categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
 
@@ -50,8 +55,8 @@ db.once('open', function() {
   verbs = mongoose.model('verbs', verbSchema);
   adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
-
   categoriesCompare = mongoose.model('categoriesCompare', categoriesCompareSchema);
+
 });
 
 app.use(bodyparser.json());
@@ -83,16 +88,24 @@ app.post('/webhook', function (req, res) {
 var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
-  // categoriesCompare.findByName(word, function (err, categoryFound) {
-  //   console.log(categoryFound);
-  //   callback();
+  categoriesCompare.findByName('algae', function (err, categoryFound) {
+    console.log(categoryFound);
+    // callback();
+  });
+  // var value = new categoriesCompare({ name: word });
+  //
+  // value.findSimilarNames(function (err, found) {
+  //   console.log(found); // woof
   // });
 
-  categoriesCompare.find({type: 'animal'}, function(err, categoryFound) {
-    if (err) return handleError(err);
-    console.log(categoryFound);
-    callback(categoryFound);
-  });
+
+
+  // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+  // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
+  //   if (err) return handleError(err);
+  //   console.log(categoryFound);
+  //   callback(categoryFound);
+  // });
   // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
   // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
   //   if (err) return handleError(err);
