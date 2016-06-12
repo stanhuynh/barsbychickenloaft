@@ -10,11 +10,16 @@ var pass = process.env.PASS;
 
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 var db = mongoose.connection;
-var nounSchema, verbSchema, adjectiveSchema;
-var Nouns, Verbs, Adjectives;
+var nounSchema, verbSchema, adjectiveSchema, categoriesCompareSchema;
+var nouns, verbs, adjectives;
 var food, animal, sport;
 
 db.once('open', function() {
+  catCompareSchema = new Schema({
+    name: String,
+    type: String
+  });
+
   nounSchema = new Schema({
     name: String,
     type: String
@@ -30,15 +35,18 @@ db.once('open', function() {
     type: String
   });
 
-
-  Verb = mongoose.model('verbs', verbSchema);
-  Adjective = mongoose.model('adjectives', adjectiveSchema);
-    // assign a function to the "methods" object of our animalSchema
+  // assign a function to the "methods" object of our animalSchema
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
+  categoriesCompareSchema.statics.findByName = function (name, cb) {
+    return this.find({ name: new RegExp(name, 'i') }, cb);
+  };
+
+  verbs = mongoose.model('verbs', verbSchema);
+  adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
-  food = new nouns({ type: 'food' });
+  categoriesCompare = mongoose.model('nouns', categoriesCompareSchema);
 });
 
 app.use(bodyparser.json());
@@ -70,8 +78,8 @@ app.post('/webhook', function (req, res) {
 var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
-  food.findSimilarTypes(function (err, foodss) {
-    console.log(foodss);
+  categoriesCompare.findByName(function (err, categoryFound) {
+    console.log(categoryFound);
   });
 };
 
