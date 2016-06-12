@@ -181,6 +181,56 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 
 function fillTemplate(template, category, cb) {
   //pull template from db
+  asyncLoop(template.index.length, function(loop) {
+    switch(template.text[template.index[i]]) {
+      case 0:
+        console.log("insert noun");
+        var n;
+        if(category === 'undefined')
+          n = new nouns({})
+        else
+          n = new nouns({type: category});
+        n.findSimilarTypes(function(err, li) {
+          // filter here
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
+          console.log(item);
+          loop.next();
+        });
+        break;
+      case 1:
+        console.log("insert verb");
+        var v;
+        if(category === undefined)
+          v = new nouns({});
+        else
+          v= new verbs({type: category});
+        v.findSimilarTypes(function(err, li) {
+          // filter here
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
+          console.log(item);
+          loop.next();
+        });
+        break;
+      case 2:
+        console.log("insert adjective");
+        var a = new adjectives();
+        a.getAll(function(err, li) {
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
+console.log(item);
+loop.next();
+        });
+        break;
+    }
+
+
+  },
+  function(){console.log('cycle ended')}
+);
+
+
   for(var i =0; i<template.index.length; i++) {
     switch(template.text[template.index[i]]) {
       case 0:
@@ -246,8 +296,10 @@ function receivedMessage(event) {
 
       // This will get rhyme from datamuse and call callback sendRhymeToUser
       getWordType(lastWord, function(category){
-        fillTemplate(sentence, category);
-        getRhyme(senderID, lastWord, category, sendRhymeToUser);
+        fillTemplate(sentence, category, function() {
+
+          getRhyme(senderID, lastWord, category, sendRhymeToUser);
+        });
       });
     });
 
@@ -258,3 +310,36 @@ function receivedMessage(event) {
 }
 
 app.listen(process.env.PORT);
+
+
+function asyncLoop(iterations, func, callback) {
+    var index = 0;
+    var done = false;
+    var loop = {
+        next: function() {
+            if (done) {
+                return;
+            }
+
+            if (index < iterations) {
+                index++;
+                func(loop);
+
+            } else {
+                done = true;
+                callback();
+            }
+        },
+
+        iteration: function() {
+            return index - 1;
+        },
+
+        break: function() {
+            done = true;
+            callback();
+        }
+    };
+    loop.next();
+    return loop;
+}
