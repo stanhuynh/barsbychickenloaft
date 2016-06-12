@@ -118,7 +118,7 @@ var sendRhymeToUser = function(senderID, rhyme) {
   var json = {
     recipient: { id: senderID },
     message: { text: rhyme }
-  }
+  };
 
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
