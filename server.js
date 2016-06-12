@@ -228,7 +228,8 @@ function fillTemplate(template, category, cb) {
 
 
   },
-  function(){console.log('cycle ended')}
+  function(){console.log('cycle ended');  console.log(template);
+    return template;}
 );
 
 
@@ -273,8 +274,8 @@ function fillTemplate(template, category, cb) {
 //         break;
 //     }
 //   }
-  console.log(template);
-  return template;
+  // console.log(template);
+  // return template;
 }
 
 function receivedMessage(event) {
