@@ -158,7 +158,7 @@ var getRhyme = function(senderID, word, category, template, callback) {
             callback(senderID, category, bar);
           }
           else {
-            sendRhymeToUser(senderID, category, "Sorry, there's no rhyme for "+word);
+            sendRhymeToUser(senderID, category, "Sorry, something went wrong somewhere");
           }
         } else {
           console.error("Unable to get rhyme.");
