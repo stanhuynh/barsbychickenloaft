@@ -130,7 +130,7 @@ var getRhyme = function(senderID, word, category, callback) {
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
 
-            var instance = new templates({length: 4});
+            var instance = new templates({length: 3});
 
             instance.findLength(function (err, sentences) {
               console.log(JSON.stringify(sentences));
