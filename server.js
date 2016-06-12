@@ -43,10 +43,7 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  console.log(mongoose.connection.readyState);
-  db.once('open', function() {
-    Noun.find({type:'foods'}, display_results);
-  });
+  Noun.find({type:'foods'}, display_results);
 });
 
 app.get('/webhook', function(req, res){
