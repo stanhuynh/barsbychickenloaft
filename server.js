@@ -88,7 +88,7 @@ var getWordType = function(word, callback){
   //   callback();
   // });
 
-  categoriesCompare.find({name: 'tofu'}, function(err, categoryFound) {
+  categoriesCompare.find({name: 'maggot'}, function(err, categoryFound) {
     if (err) return handleError(err);
     console.log(categoryFound);
     callback(categoryFound);
