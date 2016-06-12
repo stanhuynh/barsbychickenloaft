@@ -45,7 +45,7 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  nouns.find({category:'foods'}, display_results);
+  nouns.find({types:'foods'}, display_results);
 });
 
 app.get('/webhook', function(req, res){
