@@ -29,7 +29,7 @@ app.post('/webhook', function (req, res) {
   }
 });
 
-var getRhyme = function(senderId, word, callback) {
+var getRhyme = function(senderID, word, callback) {
   request({
     uri: 'https://api.datamuse.com/words',
     qs:{ml: word, rel_rhy: word},
@@ -38,7 +38,7 @@ var getRhyme = function(senderId, word, callback) {
       if (!error && response.statusCode == 200) {
         // Check to make sure there are rhymes to the last word
         if(body !== undefined || body !== null)
-          callback(senderId, JSON.parse(body)[0].word);
+          callback(senderID, JSON.parse(body)[0].word);
       } else {
         console.error("Unable to get rhyme.");
         console.error(response);
@@ -48,7 +48,7 @@ var getRhyme = function(senderId, word, callback) {
 }
 
 // Callback function when rhyme has been retrieved
-var sendRhymeToUser = function(senderId, rhyme) {
+var sendRhymeToUser = function(senderID, rhyme) {
   console.log('rhyme: ' + rhyme);
 
   var json = {
@@ -85,7 +85,7 @@ function receivedMessage(event) {
     senderID, recipientID, timeOfMessage);
 
     // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getRhyme(senderId, lastWord, sendRhymeToUser);
+    getRhyme(senderID, lastWord, sendRhymeToUser);
   } else {
     console.error('damn dawg');
   }
