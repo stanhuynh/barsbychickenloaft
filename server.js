@@ -15,24 +15,29 @@ var Nouns, Verbs, Adjectives;
 var food, animal, sport;
 
 db.once('open', function() {
-  nounSchema = Schema({
+  nounSchema = new Schema({
     name: String,
     type: String
   });
 
-  verbSchema = Schema({
+  verbSchema = new Schema({
     name: String,
     type: String
   });
 
-  adjectiveSchema = Schema({
+  adjectiveSchema = new Schema({
     name: String,
     type: String
   });
 
-  Nouns = mongoose.model('nouns', nounSchema);
+
   Verb = mongoose.model('verbs', verbSchema);
   Adjective = mongoose.model('adjectives', adjectiveSchema);
+    // assign a function to the "methods" object of our animalSchema
+  nounSchema.methods.findSimilarTypes = function (cb) {
+    return this.model('Animal').find({ type: this.type }, cb);
+  };
+  Nouns = mongoose.model('nouns', nounSchema);
   food = new Nouns({ type: 'food' });
 });
 
