@@ -183,7 +183,7 @@ function fillTemplate(template, category, cb) {
   //pull template from db
   asyncLoop(template.index.length, function(loop) {
     switch(template.text[template.index[loop.iteration()]]) {
-      case 0:
+      case '0':
         console.log("insert noun");
         var n;
         if(category === 'undefined')
@@ -198,7 +198,7 @@ function fillTemplate(template, category, cb) {
           loop.next();
         });
         break;
-      case 1:
+      case '1':
         console.log("insert verb");
         var v;
         if(category === undefined)
@@ -213,7 +213,7 @@ function fillTemplate(template, category, cb) {
           loop.next();
         });
         break;
-      case 2:
+      case '2':
         console.log("insert adjective");
         var a = new adjectives();
         a.getAll(function(err, li) {
