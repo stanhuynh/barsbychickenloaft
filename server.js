@@ -114,9 +114,9 @@ var getWordType = function(word, callback){
       console.log('getWordType failed categoryFound set to null');
       callback('null');
     }
-    console.log('detected category: '+ categoryFound[0].type);
+    console.log('detected category: '+ categoryFound);
     console.log('typeof category: '+ typeof categoryFound);
-    callback(categoryFound[0].type);
+    callback(category = categoryFound[0] !== undefined ? categoryFound[0].type : 'undefined');
   });
 
 };
@@ -220,7 +220,7 @@ function fillTemplate(template, category, cb) {
       case '1':
         console.log("insert verb");
         var v;
-        if(category === undefined) {
+        if(category === 'undefined') {
           v = new verbs({});
           v.getAll(function(err, li) {
             // filter here
