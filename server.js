@@ -98,8 +98,6 @@ var getWordType = function(word, callback){
   //   console.log(found); // woof
   // });
 
-
-
   // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
   // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
   //   if (err) return handleError(err);
