@@ -45,7 +45,7 @@ var getRhyme = function(senderID, word, callback) {
         // Check to make sure there are rhymes to the last word
         if(body !== undefined && body !== null && body !== '[]'){
           var json = JSON.parse(body);
-          callback(senderID, json[Math.floor(Math.random()*json.length-1)].word);
+          callback(senderID, json[Math.floor(Math.random()*(json.length-1))].word);
         }
       } else {
         console.error("Unable to get rhyme.");
@@ -84,7 +84,7 @@ function receivedMessage(event) {
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  if (message) {
+  if (message && message.text) {
     var messageText = message.text;
     var stringArray = messageText.split(" ");
     var lastWord = stringArray[stringArray.length-1];
