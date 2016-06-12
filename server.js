@@ -106,7 +106,7 @@ var getRhyme = function(senderID, word, callback) {
       });
 
 
-  });
+  // });
 
 }
 
@@ -149,7 +149,7 @@ function receivedMessage(event) {
     senderID, recipientID, timeOfMessage);
 
     // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getWordType(word, function(){
+    getWordType(lastWord, function(){
       getRhyme(senderID, lastWord, sendRhymeToUser);
     });
   } else {
