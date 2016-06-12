@@ -133,6 +133,7 @@ var getRhyme = function(senderID, word, category, callback) {
 var sendRhymeToUser = function(senderID, category, rhyme) {
   // console.log('rhyme: ' + rhyme);
   var messageText = category + ' ' + rhyme;
+  console.log('at sendRhymeToUser '+ category);
   var json = {
     recipient: { id: senderID },
     message: { text: messageText }
