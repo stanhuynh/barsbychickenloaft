@@ -80,7 +80,7 @@ app.post('/webhook', function (req, res) {
 var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
-  categoriesCompare.findByName(function (err, categoryFound) {
+  categoriesCompare.findByName(word, function (err, categoryFound) {
     console.log(categoryFound);
     callback();
   });
