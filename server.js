@@ -40,8 +40,12 @@ db.once('open', function() {
     return this.model('nouns').find({ type: this.type }, cb);
   };
 
+  verbSchema.methods.findSimilarTypes = function (cb) {
+    return this.model('verbs').find({ type: this.type}, cb);
+  };
+
   categoriesCompareSchema.statics.findByName = function (name, cb) {
-    return this.find({ name: new RegExp(name, 'i') }, cb);
+    return this.model('categoriesCompare').find({ name: new RegExp(name, 'i') }, cb);
   };
 
   verbs = mongoose.model('verbs', verbSchema);
