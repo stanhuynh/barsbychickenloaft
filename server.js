@@ -182,7 +182,7 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 function fillTemplate(template, category, cb) {
   //pull template from db
   for(var i =0; i<template.index.length; i++) {
-    switch(i) {
+    switch(template.text[template.index[i]]) {
       case 0:
         console.log("insert noun");
         var n;
@@ -193,6 +193,7 @@ function fillTemplate(template, category, cb) {
         n.findSimilarTypes(function(err, li) {
           // filter here
           var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
           console.log(item);
         });
         break;
@@ -206,6 +207,7 @@ function fillTemplate(template, category, cb) {
         v.findSimilarTypes(function(err, li) {
           // filter here
           var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
           console.log(item);
         });
         break;
@@ -214,11 +216,13 @@ function fillTemplate(template, category, cb) {
         var a = new adjectives();
         a.getAll(function(err, li) {
           var item = li[Math.floor(Math.random() * (li.length - 1))];
+          template.text[template.index[i]] = item.name;
 console.log(item);
         });
         break;
     }
   }
+  console.log(template);
   return template;
 }
 
