@@ -186,13 +186,14 @@ function fillTemplate(template, category, cb) {
       case 0:
         console.log("insert noun");
         var n;
-        if(category === undefined)
+        if(category === 'undefined')
           n = new nouns({})
         else
           n = new nouns({type: category});
         n.findSimilarTypes(function(err, li) {
           // filter here
-          console.log(li);
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          console.log(item);
         });
         break;
       case 1:
@@ -204,14 +205,16 @@ function fillTemplate(template, category, cb) {
           v= new verbs({type: category});
         v.findSimilarTypes(function(err, li) {
           // filter here
-          console.log(li);
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+          console.log(item);
         });
         break;
       case 2:
         console.log("insert adjective");
         var a = new adjectives();
         a.getAll(function(err, li) {
-console.log(li);
+          var item = li[Math.floor(Math.random() * (li.length - 1))];
+console.log(item);
         });
         break;
     }
