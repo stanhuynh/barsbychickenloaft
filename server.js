@@ -232,47 +232,47 @@ function fillTemplate(template, category, cb) {
 );
 
 
-  for(var i =0; i<template.index.length; i++) {
-    switch(template.text[template.index[i]]) {
-      case 0:
-        console.log("insert noun");
-        var n;
-        if(category === 'undefined')
-          n = new nouns({})
-        else
-          n = new nouns({type: category});
-        n.findSimilarTypes(function(err, li) {
-          // filter here
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
-          console.log(item);
-        });
-        break;
-      case 1:
-        console.log("insert verb");
-        var v;
-        if(category === undefined)
-          v = new nouns({});
-        else
-          v= new verbs({type: category});
-        v.findSimilarTypes(function(err, li) {
-          // filter here
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
-          console.log(item);
-        });
-        break;
-      case 2:
-        console.log("insert adjective");
-        var a = new adjectives();
-        a.getAll(function(err, li) {
-          var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
-console.log(item);
-        });
-        break;
-    }
-  }
+//   for(var i =0; i<template.index.length; i++) {
+//     switch(template.text[template.index[i]]) {
+//       case 0:
+//         console.log("insert noun");
+//         var n;
+//         if(category === 'undefined')
+//           n = new nouns({})
+//         else
+//           n = new nouns({type: category});
+//         n.findSimilarTypes(function(err, li) {
+//           // filter here
+//           var item = li[Math.floor(Math.random() * (li.length - 1))];
+//           template.text[template.index[i]] = item.name;
+//           console.log(item);
+//         });
+//         break;
+//       case 1:
+//         console.log("insert verb");
+//         var v;
+//         if(category === undefined)
+//           v = new nouns({});
+//         else
+//           v= new verbs({type: category});
+//         v.findSimilarTypes(function(err, li) {
+//           // filter here
+//           var item = li[Math.floor(Math.random() * (li.length - 1))];
+//           template.text[template.index[i]] = item.name;
+//           console.log(item);
+//         });
+//         break;
+//       case 2:
+//         console.log("insert adjective");
+//         var a = new adjectives();
+//         a.getAll(function(err, li) {
+//           var item = li[Math.floor(Math.random() * (li.length - 1))];
+//           template.text[template.index[i]] = item.name;
+// console.log(item);
+//         });
+//         break;
+//     }
+//   }
   console.log(template);
   return template;
 }
