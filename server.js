@@ -47,7 +47,7 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  nouns.find({type:'food'}, display_results);
+  // Nouns.find({type:'food'}, display_results);
 });
 
 app.get('/webhook', function(req, res){
@@ -79,23 +79,30 @@ var getWordType = function(word, callback){
 };
 
 var getRhyme = function(senderID, word, callback) {
-  request({
-    uri: 'https://api.datamuse.com/words',
-    qs:{rel_rhy: word},
-    method: 'GET',
-    }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        // Check to make sure there are rhymes to the last word
-        if(body !== undefined && body !== null && body !== '[]'){
-          var json = JSON.parse(body);
-          callback(senderID, json[Math.floor(Math.random()*(json.length-1))].word);
+  getWordType(word, function(){
+
+
+    request({
+      uri: 'https://api.datamuse.com/words',
+      qs:{rel_rhy: word},
+      method: 'GET',
+      }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          // Check to make sure there are rhymes to the last word
+          if(body !== undefined && body !== null && body !== '[]'){
+            var json = JSON.parse(body);
+            callback(senderID, json[Math.floor(Math.random()*(json.length-1))].word);
+          }
+        } else {
+          console.error("Unable to get rhyme.");
+          console.error(response);
+          console.error(error);
         }
-      } else {
-        console.error("Unable to get rhyme.");
-        console.error(response);
-        console.error(error);
-      }
-    });
+      });
+
+
+  });
+
 }
 
 // Callback function when rhyme has been retrieved
