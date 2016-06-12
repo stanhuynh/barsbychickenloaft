@@ -3,6 +3,7 @@ var app = express();
 var bodyparser = require('body-parser');
 var request = require('request');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var user = process.env.USER;
 var pass = process.env.PASS;
