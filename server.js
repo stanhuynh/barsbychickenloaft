@@ -20,52 +20,16 @@ app.post('/webhook', function (req, res) {
   var data = req.body;
   // Make sure this is a page subscr.iption
   if (data.object == 'page') {
-    console.log('Data Entry: '+JSON.stringify(data.entry));
-
+    // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
-
     console.log('Messaging: '+JSON.stringify(entry.messaging));
-
     receivedMessage(entry.messaging[entry.messaging.length-1]);
 
-
-
-    // Iterate over each entry
-    // There may be multiple if batched
-    // data.entry.forEach(function(pageEntry) {
-    //   var pageID = pageEntry.id;
-    //   var timeOfEvent = pageEntry.time;
-    //
-    //   console.log(JSON.stringify(pageEntry.messaging));
-    //   var length = pageEntry.messaging.length;
-    //
-    //   receivedMessage(pageEntry.messaging[length-1]);
-    // });
-
-    // Assume all went well.
-    //
-    // You must send back a 200, within 20 seconds, to let us know you've
-    // successfully received the callback. Otherwise, the request will time out.
     res.sendStatus(200);
   }
 });
 
-/*
- * Message Event
- *
- * This event is called when a message is sent to your page. The 'message'
- * object format can vary depending on the kind of message that was received.
- * Read more at https://developers.facebook.com/docs/messenger-platform/webhook-reference#received_message
- *
- * For this example, we're going to echo any text that we get. If we get some
- * special keywords ('button', 'generic', 'receipt'), then we'll send back
- * examples of those bubbles to illustrate the special message bubbles we've
- * created. If we receive a message with an attachment (image, video, audio),
- * then we'll simply confirm that we've received the attachment.
- *
- */
-function getRhyme(word, callback) {
-
+var getRhyme = function(word, callback) {
   request({
     uri: 'https://api.datamuse.com/words',
     qs:{ml: word, rel_rhy: word},
@@ -83,6 +47,28 @@ function getRhyme(word, callback) {
     });
 }
 
+// Callback function when rhyme has been retrieved
+var sendRhymeToUser = function(rhyme) {
+  console.log('rhyme: ' + rhyme);
+
+  var json = {
+    recipient: { id:senderID },
+    message: { text:rhyme }
+  }
+
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: json
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log("Successfully sent rhyme to user");
+    } else {
+      console.error("Unable to send message.");
+    }
+  });
+};
 
 function receivedMessage(event) {
   var senderID = event.sender.id;
@@ -98,36 +84,8 @@ function receivedMessage(event) {
     console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
 
-    var rhymes = function(rhyme) {
-      console.log('callback: ' + rhyme);
-
-      var json = {
-        recipient: { id:senderID },
-        message: { text:rhyme }
-      }
-
-      request({
-        uri: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: json
-      }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          var recipientId = body.recipient_id;
-          var messageId = body.message_id;
-
-          console.log("Successfully sent generic message with id %s to recipient %s",
-          messageId, recipientId);
-
-        } else {
-          console.error("Unable to send message.");
-          console.error(response);
-          console.error(error);
-        }
-      });
-    };
-
-    getRhyme(lastWord, rhymes);
+    // This will get rhyme from datamuse and call callback sendRhymeToUser
+    getRhyme(lastWord, sendRhymeToUser);
   } else {
     console.error('damn dawg');
   }
