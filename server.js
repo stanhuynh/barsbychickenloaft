@@ -36,6 +36,12 @@ db.once('open', function() {
     name: String
   });
 
+  templateSchema = new Schema({
+    length: Number,
+    index: Array,
+    text: Array
+  });
+
   // assign a function to the "methods" object of our animalSchema
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
@@ -54,11 +60,15 @@ db.once('open', function() {
 
   };
 
+  templateSchema.methods.findLength = function(length, cb) {
+    return this.model('templates').find({ length: this.length }, cb);
+  }
+
   verbs = mongoose.model('verbs', verbSchema);
   adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
   categoriesCompare = mongoose.model('categoriesCompare', categoriesCompareSchema);
-
+  templates = mongoose.model('templates', templateSchema);
 });
 
 app.use(bodyparser.json());
