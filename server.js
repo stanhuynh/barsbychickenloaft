@@ -31,8 +31,7 @@ db.once('open', function() {
   });
 
   adjectiveSchema = new Schema({
-    name: String,
-    type: String
+    name: String
   });
 
   // assign a function to the "methods" object of our animalSchema
@@ -87,8 +86,6 @@ var getWordType = function(word, callback){
 };
 
 var getRhyme = function(senderID, word, callback) {
-  getWordType(word, function(){
-
 
     request({
       uri: 'https://api.datamuse.com/words',
@@ -152,7 +149,9 @@ function receivedMessage(event) {
     senderID, recipientID, timeOfMessage);
 
     // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getRhyme(senderID, lastWord, sendRhymeToUser);
+    getWordType(word, function(){
+      getRhyme(senderID, lastWord, sendRhymeToUser);
+    });
   } else {
     console.error('damn dawg');
   }
