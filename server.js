@@ -8,31 +8,33 @@ var user = process.env.USER;
 var pass = process.env.PASS;
 
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
+var db = mongoose.connection;
 
-var nouns = mongoose.Schema({
-  value: String,
-  type: String
+db.once('open', function() {
+  var nouns = mongoose.Schema({
+    value: String,
+    type: String
+  });
+
+  var verbs = mongoose.Schema({
+    value:String,
+    type:String
+  });
+
+  var adjectives = mongoose.Schema({
+    value:String,
+    type:String
+  });
+
+  var noun = mongoose.model('Noun', nouns);
+  var verb = mongoose.model('Verb', verbs);
+  var adjective = mongoose.model('Adjective', adjectives);
 });
 
-var verbs = mongoose.Schema({
-  value:String,
-  type:String
-});
-
-var adjectives = mongoose.Schema({
-  value:String,
-  type:String
-});
-
-var noun = mongoose.model('Noun', nouns);
-var verb = mongoose.model('Verb', verbs);
-var adjective = mongoose.model('Adjective', adjectives);
 
 function display_results(results) {
   for (i=0;i<results.length-1;i++) {
-    res.send(
-      results[i].value
-    )
+    res.send(results[i].value);
   }
 }
 
