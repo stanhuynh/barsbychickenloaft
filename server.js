@@ -42,7 +42,9 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  Noun.find({type:'Food'}, display_results);
+  db.once('open', function() {
+    Noun.find({type:'Food'}, display_results);
+  });
 });
 
 app.get('/webhook', function(req, res){
