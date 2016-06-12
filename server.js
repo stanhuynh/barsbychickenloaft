@@ -38,19 +38,13 @@ db.once('open', function() {
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
-
-<<<<<<< HEAD
-  categoriesCompareSchema.statics.findByName = function (name, cb) {
-    return this.find({ name: new RegExp(name, 'i') }, cb);
-=======
   verbSchema.methods.findSimilarTypes = function (cb) {
     return this.model('verbs').find({ type: this.type}, cb);
   };
 
   categoriesCompareSchema.statics.findByName = function (name, cb) {
-    return this.model('categoriesCompare').find({ name: new RegExp(name, 'i') }, cb);
+    return this.find({ name: new RegExp(name, 'i') }, cb);
 
->>>>>>> 3e52faa2f0171f5f0f50aa1c93128f5b7a94edfc
   };
 
   verbs = mongoose.model('verbs', verbSchema);
