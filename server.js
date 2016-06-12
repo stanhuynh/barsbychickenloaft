@@ -37,8 +37,8 @@ db.once('open', function() {
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
-  Nouns = mongoose.model('nouns', nounSchema);
-  food = new Nouns({ type: 'food' });
+  nouns = mongoose.model('nouns', nounSchema);
+  food = new nouns({ type: 'food' });
 });
 
 app.use(bodyparser.json());
@@ -71,7 +71,7 @@ var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
   food.findSimilarTypes(function (err, foodss) {
-    console.log(foodss); // woof
+    console.log(foodss);
   });
 };
 
