@@ -219,11 +219,12 @@ function fillTemplate(template, category, cb) {
         a.getAll(function(err, li) {
           var item = li[Math.floor(Math.random() * (li.length - 1))];
           template.text[template.index[i]] = item.name;
-console.log(item);
-loop.next();
+          console.log(item);
+          loop.next();
         });
         break;
     }
+    console.log(loop.iteration());
 
 
   },
