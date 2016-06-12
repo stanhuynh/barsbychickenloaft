@@ -60,7 +60,7 @@ db.once('open', function() {
 
   };
 
-  templateSchema.methods.findLength = function(length, cb) {
+  templateSchema.methods.findLength = function(cb) {
     return this.model('templates').find({ length: this.length }, cb);
   }
 
@@ -129,6 +129,15 @@ var getRhyme = function(senderID, word, category, callback) {
           // Check to make sure there are rhymes to the last word
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
+
+            var instance = new templates({length: 4});
+
+            instance.findLength(function (err, sentences) {
+              console.log(sentences);
+            });
+
+
+
             callback(senderID, category, json[Math.floor(Math.random()*(json.length-1))].word);
           }
         } else {
