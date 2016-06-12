@@ -39,7 +39,7 @@ db.once('open', function() {
     return this.model('nouns').find({ type: this.type }, cb);
   };
 
-  categoriesCompareSchema.statics.findByName = function (name, cb) {
+  categoriesCompareSchema.methods.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
   };
 
