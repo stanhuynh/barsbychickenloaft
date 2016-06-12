@@ -216,7 +216,7 @@ console.log(li);
         break;
     }
   }
-  return newTemplateString
+  return template;
 }
 
 function receivedMessage(event) {
