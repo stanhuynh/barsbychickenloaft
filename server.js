@@ -39,7 +39,7 @@ db.once('open', function() {
     return this.model('nouns').find({ type: this.type }, cb);
   };
 
-  categoriesCompareSchema.methods.findByName = function (name, cb) {
+  categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
   };
 
@@ -79,9 +79,17 @@ app.post('/webhook', function (req, res) {
 var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
-  categoriesCompare.findByName(word, function (err, categoryFound) {
-    console.log(categoryFound);
-    callback();
+  // categoriesCompare.findByName(word, function (err, categoryFound) {
+  //   console.log(categoryFound);
+  //   callback();
+  // });
+
+
+  // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+  categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
+    if (err) return handleError(err);
+    // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+    callback(categoryFound);
   });
 };
 
