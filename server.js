@@ -11,7 +11,7 @@ var pass = process.env.PASS;
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 var db = mongoose.connection;
 var nounSchema, verbSchema, adjectiveSchema, categoriesCompareSchema;
-var nouns, verbs, adjectives;
+var nouns, verbs, adjectives, categoriesCompare;
 var food, animal, sport;
 
 db.once('open', function() {
