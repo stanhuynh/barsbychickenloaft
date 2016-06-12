@@ -182,7 +182,7 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 function fillTemplate(template, category, cb) {
   //pull template from db
   asyncLoop(template.index.length, function(loop) {
-    switch(template.text[template.index[i]]) {
+    switch(template.text[template.index[loop.iteration()]]) {
       case 0:
         console.log("insert noun");
         var n;
@@ -193,7 +193,7 @@ function fillTemplate(template, category, cb) {
         n.findSimilarTypes(function(err, li) {
           // filter here
           var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
+          template.text[template.index[loop.iteration()]] = item.name;
           console.log(item);
           loop.next();
         });
@@ -208,7 +208,7 @@ function fillTemplate(template, category, cb) {
         v.findSimilarTypes(function(err, li) {
           // filter here
           var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
+          template.text[template.index[loop.iteration()]] = item.name;
           console.log(item);
           loop.next();
         });
@@ -218,7 +218,7 @@ function fillTemplate(template, category, cb) {
         var a = new adjectives();
         a.getAll(function(err, li) {
           var item = li[Math.floor(Math.random() * (li.length - 1))];
-          template.text[template.index[i]] = item.name;
+          template.text[template.index[loop.iteration()]] = item.name;
           console.log(item);
           loop.next();
         });
