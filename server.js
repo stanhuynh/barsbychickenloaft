@@ -115,6 +115,15 @@ var getWordType = function(word, callback){
 //
 var spitLine = function(category, lineLength){
   // Pick at random which line from our preset templates to use
+  var instance = new templates({length: lineLength});
+
+  instance.findLength(function (err, sentences) {
+    // console.log(JSON.stringify(sentences));
+
+    var rannum = Math.floor(Math.random()*(sentences.length-1));
+    sentence = sentences[rannum];
+    console.log('Sentence: '+sentence);
+  });
 
 }
 
@@ -129,14 +138,6 @@ var getRhyme = function(senderID, word, category, callback) {
           // Check to make sure there are rhymes to the last word
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
-
-            var instance = new templates({length: 3});
-
-            instance.findLength(function (err, sentences) {
-              console.log(JSON.stringify(sentences));
-            });
-
-
 
             callback(senderID, category, json[Math.floor(Math.random()*(json.length-1))].word);
           }
