@@ -95,7 +95,7 @@ var getWordType = function(word, callback){
       console.log('getWordType failed categoryFound set to null');
       callback('null');
     }
-    console.log('detected category: '+ categoryFound['type']);
+    console.log('detected category: '+ categoryFound);
     callback(categoryFound.type);
   });
 
