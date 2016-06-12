@@ -27,6 +27,7 @@ db.once('open', function() {
 
   adjectiveSchema = Schema({
     name: String,
+    type: String
   });
 
   Nouns = mongoose.model('nouns', nounSchema);
@@ -38,7 +39,7 @@ db.once('open', function() {
 
 function display_results(results) {
   for (i=0;i<results.length-1;i++) {
-    res.send(results[i].value);
+    res.send(results[i].name);
   }
 }
 
@@ -46,7 +47,7 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  noun.find({type:'foods'}, display_results);
+  nouns.find({type:'food'}, display_results);
 });
 
 app.get('/webhook', function(req, res){
