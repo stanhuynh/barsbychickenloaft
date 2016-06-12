@@ -10,26 +10,28 @@ var pass = process.env.PASS;
 
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 var db = mongoose.connection;
+var nounSchema, verbSchema, adjectiveSchema;
+var nouns, verbs, adjectives;
 
 db.once('open', function() {
-  var nounSchema = Schema({
+  nounSchema = Schema({
     name: String,
     category: String
   });
-  //
-  // var verbs = Schema({
-  //   value:String,
-  //   type:String
-  // });
-  //
-  // var adjectives = Schema({
-  //   value:String,
-  //   type:String
-  // });
 
-  var nouns = mongoose.model('nouns', nounSchema);
-  // var verb = mongoose.model('Verb', verbs);
-  // var adjective = mongoose.model('Adjective', adjectives);
+  verbSchema = Schema({
+    name: String,
+    category: String
+  });
+
+  adjectiveSchema = Schema({
+    name: String,
+    category: String
+  });
+
+  nouns = mongoose.model('nouns', nounSchema);
+  verb = mongoose.model('verbs', verbSchema);
+  adjective = mongoose.model('adjectives', adjectiveSchema);
 });
 
 
