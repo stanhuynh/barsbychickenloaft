@@ -95,29 +95,17 @@ var getWordType = function(word, callback){
       console.log('getWordType failed categoryFound set to null');
       callback('null');
     }
-    console.log('detected category: '+ categoryFound);
-    callback(categoryFound);
+    console.log('detected category: '+ categoryFound.type);
+    callback(categoryFound.type);
   });
-  // var value = new categoriesCompare({ name: word });
-  //
-  // value.findSimilarNames(function (err, found) {
-  //   console.log(found); // woof
-  // });
 
-  // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-  // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
-  //   if (err) return handleError(err);
-  //   console.log(categoryFound);
-  //   callback(categoryFound);
-  // });
-  // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-  // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
-  //   if (err) return handleError(err);
-  //   // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
-  //   console.log(categoryFound);
-  //   callback(categoryFound);
-  // });
 };
+
+//
+var spitLine = function(category, lineLength){
+  // Pick at random which line from our preset templates to use
+
+}
 
 var getRhyme = function(senderID, word, category, callback) {
 
@@ -130,7 +118,7 @@ var getRhyme = function(senderID, word, category, callback) {
           // Check to make sure there are rhymes to the last word
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
-            callback(senderID, json[Math.floor(Math.random()*(json.length-1))].word);
+            callback(senderID, category, json[Math.floor(Math.random()*(json.length-1))].word);
           }
         } else {
           console.error("Unable to get rhyme.");
@@ -139,18 +127,15 @@ var getRhyme = function(senderID, word, category, callback) {
         }
       });
 
-
-  // });
-
 }
 
 // Callback function when rhyme has been retrieved
-var sendRhymeToUser = function(senderID, rhyme) {
-  console.log('rhyme: ' + rhyme);
-
+var sendRhymeToUser = function(senderID, category, rhyme) {
+  // console.log('rhyme: ' + rhyme);
+  var messageText = category + ' ' + rhyme;
   var json = {
     recipient: { id: senderID },
-    message: { text: rhyme }
+    message: { text: messageText }
   };
 
   request({
