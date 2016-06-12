@@ -27,9 +27,9 @@ db.once('open', function() {
     type:String
   });
 
-  var noun = mongoose.model('Noun', nouns);
-  var verb = mongoose.model('Verb', verbs);
-  var adjective = mongoose.model('Adjective', adjectives);
+  var noun = mongoose.model('noun', nouns);
+  var verb = mongoose.model('verb', verbs);
+  var adjective = mongoose.model('adjective', adjectives);
 });
 
 
@@ -43,7 +43,7 @@ app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  Noun.find({type:'foods'}, display_results);
+  noun.find({type:'foods'}, display_results);
 });
 
 app.get('/webhook', function(req, res){
