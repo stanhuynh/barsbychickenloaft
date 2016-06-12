@@ -10,7 +10,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/webhook', function(req, res){
-  if(req.query['hub.verify_token'] === 'barsbychickenloaft'){
+  if(req.query['hub.verify_token'] === process.env.VERIFY_TOKEN){
     res.send(req.query['hub.challenge']);
   }
   res.send('error');
