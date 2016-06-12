@@ -34,18 +34,21 @@ db.once('open', function() {
   adjective = mongoose.model('adjectives', adjectiveSchema);
 });
 
-
-function display_results(results) {
-  for (i=0;i<results.length-1;i++) {
-    res.send(results[i].name);
-  }
-}
-
 app.use(bodyparser.json());
 
 app.get('/', function(req, res){
   res.send('hello world');
-  nouns.find({type:'food'}, display_results);
+  var query = nouns.find({type:'food'});
+  query.exec(display_results(err, results) {
+    if (!err){
+      results.forEach(function(result) {
+        res.send(
+          result.name
+        )
+      })
+    }
+  })
+
 });
 
 app.get('/webhook', function(req, res){
