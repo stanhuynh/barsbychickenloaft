@@ -12,24 +12,24 @@ mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychic
 var db = mongoose.connection;
 
 db.once('open', function() {
-  var nouns = mongoose.Schema({
-    value: String,
-    type: String
+  var nounSchema = Schema({
+    name: String,
+    category: String
   });
+  //
+  // var verbs = Schema({
+  //   value:String,
+  //   type:String
+  // });
+  //
+  // var adjectives = Schema({
+  //   value:String,
+  //   type:String
+  // });
 
-  var verbs = mongoose.Schema({
-    value:String,
-    type:String
-  });
-
-  var adjectives = mongoose.Schema({
-    value:String,
-    type:String
-  });
-
-  var noun = mongoose.model('Noun', nouns);
-  var verb = mongoose.model('Verb', verbs);
-  var adjective = mongoose.model('Adjective', adjectives);
+  var nouns = mongoose.model('nouns', nounSchema);
+  // var verb = mongoose.model('Verb', verbs);
+  // var adjective = mongoose.model('Adjective', adjectives);
 });
 
 

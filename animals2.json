@@ -1,0 +1,1534 @@
+[
+  {
+    "name": "macaque",
+    "category": "animal"
+  },
+  {
+    "name": "macaw",
+    "category": "animal"
+  },
+  {
+    "name": "mackerel",
+    "category": "animal"
+  },
+  {
+    "name": "Macrauchenia",
+    "category": "animal"
+  },
+  {
+    "name": "maggot",
+    "category": "animal"
+  },
+  {
+    "name": "mako shark",
+    "category": "animal"
+  },
+  {
+    "name": "mallard duck",
+    "category": "animal"
+  },
+  {
+    "name": "mammal",
+    "category": "animal"
+  },
+  {
+    "name": "mammoth",
+    "category": "animal"
+  },
+  {
+    "name": "manatee",
+    "category": "animal"
+  },
+  {
+    "name": "mandrill",
+    "category": "animal"
+  },
+  {
+    "name": "mamba",
+    "category": "animal"
+  },
+  {
+    "name": "man-o'-war",
+    "category": "animal"
+  },
+  {
+    "name": "manta ray",
+    "category": "animal"
+  },
+  {
+    "name": "mantid",
+    "category": "animal"
+  },
+  {
+    "name": "mantis",
+    "category": "animal"
+  },
+  {
+    "name": "marbled murrelet",
+    "category": "animal"
+  },
+  {
+    "name": "marine mammals",
+    "category": "animal"
+  },
+  {
+    "name": "marmoset",
+    "category": "animal"
+  },
+  {
+    "name": "marmot",
+    "category": "animal"
+  },
+  {
+    "name": "marsupial",
+    "category": "animal"
+  },
+  {
+    "name": "mastiff",
+    "category": "animal"
+  },
+  {
+    "name": "mastodon",
+    "category": "animal"
+  },
+  {
+    "name": "meadowlark",
+    "category": "animal"
+  },
+  {
+    "name": "mealworm",
+    "category": "animal"
+  },
+  {
+    "name": "meerkat",
+    "category": "animal"
+  },
+  {
+    "name": "Megalodon",
+    "category": "animal"
+  },
+  {
+    "name": "megamouth shark",
+    "category": "animal"
+  },
+  {
+    "name": "merganser",
+    "category": "animal"
+  },
+  {
+    "name": "midge",
+    "category": "animal"
+  },
+  {
+    "name": "migrate",
+    "category": "animal"
+  },
+  {
+    "name": "millipede",
+    "category": "animal"
+  },
+  {
+    "name": "mink",
+    "category": "animal"
+  },
+  {
+    "name": "minnow",
+    "category": "animal"
+  },
+  {
+    "name": "mice",
+    "category": "animal"
+  },
+  {
+    "name": "mockingbird",
+    "category": "animal"
+  },
+  {
+    "name": "moa",
+    "category": "animal"
+  },
+  {
+    "name": "mockingbird",
+    "category": "animal"
+  },
+  {
+    "name": "mole",
+    "category": "animal"
+  },
+  {
+    "name": "mollusk",
+    "category": "animal"
+  },
+  {
+    "name": "monarch butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "mongoose",
+    "category": "animal"
+  },
+  {
+    "name": "monitor lizard",
+    "category": "animal"
+  },
+  {
+    "name": "monkey",
+    "category": "animal"
+  },
+  {
+    "name": "monotreme",
+    "category": "animal"
+  },
+  {
+    "name": "moose",
+    "category": "animal"
+  },
+  {
+    "name": "moray eel",
+    "category": "animal"
+  },
+  {
+    "name": "Morganucodon",
+    "category": "animal"
+  },
+  {
+    "name": "morpho butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "mosquito",
+    "category": "animal"
+  },
+  {
+    "name": "moth",
+    "category": "animal"
+  },
+  {
+    "name": "mountain lion",
+    "category": "animal"
+  },
+  {
+    "name": "mouse",
+    "category": "animal"
+  },
+  {
+    "name": "mudpuppy",
+    "category": "animal"
+  },
+  {
+    "name": "musk ox",
+    "category": "animal"
+  },
+  {
+    "name": "muskrat",
+    "category": "animal"
+  },
+  {
+    "name": "mussels",
+    "category": "animal"
+  },
+  {
+    "name": "mustelids",
+    "category": "animal"
+  },
+  {
+    "name": "nabarlek",
+    "category": "animal"
+  },
+  {
+    "name": "naked mole-rat",
+    "category": "animal"
+  },
+  {
+    "name": "nandu",
+    "category": "animal"
+  },
+  {
+    "name": "narwhal",
+    "category": "animal"
+  },
+  {
+    "name": "nautilus",
+    "category": "animal"
+  },
+  {
+    "name": "nene",
+    "category": "animal"
+  },
+  {
+    "name": "nest",
+    "category": "animal"
+  },
+  {
+    "name": "newt",
+    "category": "animal"
+  },
+  {
+    "name": "nightingale",
+    "category": "animal"
+  },
+  {
+    "name": "nine-banded armadillo",
+    "category": "animal"
+  },
+  {
+    "name": "North American beaver",
+    "category": "animal"
+  },
+  {
+    "name": "North American porcupine",
+    "category": "animal"
+  },
+  {
+    "name": "northern cardinal",
+    "category": "animal"
+  },
+  {
+    "name": "northern elephant seal",
+    "category": "animal"
+  },
+  {
+    "name": "northern fur seal",
+    "category": "animal"
+  },
+  {
+    "name": "northern right whale",
+    "category": "animal"
+  },
+  {
+    "name": "numbat",
+    "category": "animal"
+  },
+  {
+    "name": "nurse shark",
+    "category": "animal"
+  },
+  {
+    "name": "nuthatch",
+    "category": "animal"
+  },
+  {
+    "name": "nutria",
+    "category": "animal"
+  },
+  {
+    "name": "nymph",
+    "category": "animal"
+  },
+  {
+    "name": "ocelot",
+    "category": "animal"
+  },
+  {
+    "name": "octopus",
+    "category": "animal"
+  },
+  {
+    "name": "okapi",
+    "category": "animal"
+  },
+  {
+    "name": "old English sheepdog",
+    "category": "animal"
+  },
+  {
+    "name": "onager",
+    "category": "animal"
+  },
+  {
+    "name": "opossum",
+    "category": "animal"
+  },
+  {
+    "name": "orangutan",
+    "category": "animal"
+  },
+  {
+    "name": "orca",
+    "category": "animal"
+  },
+  {
+    "name": "Oregon silverspot butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "oriole",
+    "category": "animal"
+  },
+  {
+    "name": "Ornitholestes",
+    "category": "animal"
+  },
+  {
+    "name": "Ornithomimus",
+    "category": "animal"
+  },
+  {
+    "name": "oropendola",
+    "category": "animal"
+  },
+  {
+    "name": "Orthacanthus",
+    "category": "animal"
+  },
+  {
+    "name": "oryx",
+    "category": "animal"
+  },
+  {
+    "name": "ostrich",
+    "category": "animal"
+  },
+  {
+    "name": "otter, river",
+    "category": "animal"
+  },
+  {
+    "name": "otter, sea",
+    "category": "animal"
+  },
+  {
+    "name": "Oviraptor",
+    "category": "animal"
+  },
+  {
+    "name": "owl",
+    "category": "animal"
+  },
+  {
+    "name": "ox",
+    "category": "animal"
+  },
+  {
+    "name": "oxpecker",
+    "category": "animal"
+  },
+  {
+    "name": "oyster",
+    "category": "animal"
+  },
+  {
+    "name": "painted lady butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "painted turtle",
+    "category": "animal"
+  },
+  {
+    "name": "panda",
+    "category": "animal"
+  },
+  {
+    "name": "pangolin",
+    "category": "animal"
+  },
+  {
+    "name": "panther",
+    "category": "animal"
+  },
+  {
+    "name": "parakeet",
+    "category": "animal"
+  },
+  {
+    "name": "parrot",
+    "category": "animal"
+  },
+  {
+    "name": "peacock",
+    "category": "animal"
+  },
+  {
+    "name": "peafowl",
+    "category": "animal"
+  },
+  {
+    "name": "pekingese",
+    "category": "animal"
+  },
+  {
+    "name": "pelican",
+    "category": "animal"
+  },
+  {
+    "name": "penguin",
+    "category": "animal"
+  },
+  {
+    "name": "peregrine falcon",
+    "category": "animal"
+  },
+  {
+    "name": "Perissodactyls",
+    "category": "animal"
+  },
+  {
+    "name": "petrel",
+    "category": "animal"
+  },
+  {
+    "name": "pig",
+    "category": "animal"
+  },
+  {
+    "name": "pigeon",
+    "category": "animal"
+  },
+  {
+    "name": "pika",
+    "category": "animal"
+  },
+  {
+    "name": "pill bug",
+    "category": "animal"
+  },
+  {
+    "name": "pinnipeds",
+    "category": "animal"
+  },
+  {
+    "name": "piranha",
+    "category": "animal"
+  },
+  {
+    "name": "placental mammals",
+    "category": "animal"
+  },
+  {
+    "name": "plankton",
+    "category": "animal"
+  },
+  {
+    "name": "platybelodon",
+    "category": "animal"
+  },
+  {
+    "name": "platypus",
+    "category": "animal"
+  },
+  {
+    "name": "ploughshare tortoise",
+    "category": "animal"
+  },
+  {
+    "name": "plover",
+    "category": "animal"
+  },
+  {
+    "name": "polar bear",
+    "category": "animal"
+  },
+  {
+    "name": "polliwog",
+    "category": "animal"
+  },
+  {
+    "name": "pomeranian",
+    "category": "animal"
+  },
+  {
+    "name": "pompano",
+    "category": "animal"
+  },
+  {
+    "name": "pond skater",
+    "category": "animal"
+  },
+  {
+    "name": "poodle",
+    "category": "animal"
+  },
+  {
+    "name": "porcupine",
+    "category": "animal"
+  },
+  {
+    "name": "porpoise",
+    "category": "animal"
+  },
+  {
+    "name": "Port Jackson shark",
+    "category": "animal"
+  },
+  {
+    "name": "Portuguese water dog",
+    "category": "animal"
+  },
+  {
+    "name": "Postosuchus",
+    "category": "animal"
+  },
+  {
+    "name": "prairie chicken",
+    "category": "animal"
+  },
+  {
+    "name": "praying mantid",
+    "category": "animal"
+  },
+  {
+    "name": "praying mantis",
+    "category": "animal"
+  },
+  {
+    "name": "primates",
+    "category": "animal"
+  },
+  {
+    "name": "Proboscideans",
+    "category": "animal"
+  },
+  {
+    "name": "pronghorn",
+    "category": "animal"
+  },
+  {
+    "name": "protozoan",
+    "category": "animal"
+  },
+  {
+    "name": "pufferfish",
+    "category": "animal"
+  },
+  {
+    "name": "puffin",
+    "category": "animal"
+  },
+  {
+    "name": "pug",
+    "category": "animal"
+  },
+  {
+    "name": "puma",
+    "category": "animal"
+  },
+  {
+    "name": "pupa",
+    "category": "animal"
+  },
+  {
+    "name": "pupfish",
+    "category": "animal"
+  },
+  {
+    "name": "python",
+    "category": "animal"
+  },
+  {
+    "name": "Quaesitosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "quagga",
+    "category": "animal"
+  },
+  {
+    "name": "quail",
+    "category": "animal"
+  },
+  {
+    "name": "Queen Alexandra's birdwing",
+    "category": "animal"
+  },
+  {
+    "name": "queen conch",
+    "category": "animal"
+  },
+  {
+    "name": "quetzal",
+    "category": "animal"
+  },
+  {
+    "name": "quokka",
+    "category": "animal"
+  },
+  {
+    "name": "quoll",
+    "category": "animal"
+  },
+  {
+    "name": "rabbit",
+    "category": "animal"
+  },
+  {
+    "name": "raccoon",
+    "category": "animal"
+  },
+  {
+    "name": "rat",
+    "category": "animal"
+  },
+  {
+    "name": "rattlesnake",
+    "category": "animal"
+  },
+  {
+    "name": "ray",
+    "category": "animal"
+  },
+  {
+    "name": "redbilled oxpecker",
+    "category": "animal"
+  },
+  {
+    "name": "red hooded duck",
+    "category": "animal"
+  },
+  {
+    "name": "red-tailed hawk",
+    "category": "animal"
+  },
+  {
+    "name": "red kangaroo",
+    "category": "animal"
+  },
+  {
+    "name": "red panda",
+    "category": "animal"
+  },
+  {
+    "name": "red wolf",
+    "category": "animal"
+  },
+  {
+    "name": "reindeer",
+    "category": "animal"
+  },
+  {
+    "name": "reptile",
+    "category": "animal"
+  },
+  {
+    "name": "rhea",
+    "category": "animal"
+  },
+  {
+    "name": "rhino",
+    "category": "animal"
+  },
+  {
+    "name": "rhinoceros",
+    "category": "animal"
+  },
+  {
+    "name": "Rhode Island red",
+    "category": "animal"
+  },
+  {
+    "name": "right whale",
+    "category": "animal"
+  },
+  {
+    "name": "ring-billed gull",
+    "category": "animal"
+  },
+  {
+    "name": "ring-tailed lemur",
+    "category": "animal"
+  },
+  {
+    "name": "ringtail possum",
+    "category": "animal"
+  },
+  {
+    "name": "river otter",
+    "category": "animal"
+  },
+  {
+    "name": "roadrunner",
+    "category": "animal"
+  },
+  {
+    "name": "roach",
+    "category": "animal"
+  },
+  {
+    "name": "robin",
+    "category": "animal"
+  },
+  {
+    "name": "rock dove",
+    "category": "animal"
+  },
+  {
+    "name": "rockhopper penguin",
+    "category": "animal"
+  },
+  {
+    "name": "rodent",
+    "category": "animal"
+  },
+  {
+    "name": "rooster",
+    "category": "animal"
+  },
+  {
+    "name": "rottweiler",
+    "category": "animal"
+  },
+  {
+    "name": "roundworm",
+    "category": "animal"
+  },
+  {
+    "name": "ruby-throated hummingbird",
+    "category": "animal"
+  },
+  {
+    "name": "sailfish",
+    "category": "animal"
+  },
+  {
+    "name": "salamander",
+    "category": "animal"
+  },
+  {
+    "name": "salmon",
+    "category": "animal"
+  },
+  {
+    "name": "sand dollar",
+    "category": "animal"
+  },
+  {
+    "name": "sandpiper",
+    "category": "animal"
+  },
+  {
+    "name": "scallop",
+    "category": "animal"
+  },
+  {
+    "name": "scarlet macaw",
+    "category": "animal"
+  },
+  {
+    "name": "scorpion",
+    "category": "animal"
+  },
+  {
+    "name": "Scottish terrier",
+    "category": "animal"
+  },
+  {
+    "name": "sea anemone",
+    "category": "animal"
+  },
+  {
+    "name": "sea cow",
+    "category": "animal"
+  },
+  {
+    "name": "sea cucumber",
+    "category": "animal"
+  },
+  {
+    "name": "sealion",
+    "category": "animal"
+  },
+  {
+    "name": "sea cucumber",
+    "category": "animal"
+  },
+  {
+    "name": "seahorse",
+    "category": "animal"
+  },
+  {
+    "name": "seal",
+    "category": "animal"
+  },
+  {
+    "name": "sea otter",
+    "category": "animal"
+  },
+  {
+    "name": "sea star",
+    "category": "animal"
+  },
+  {
+    "name": "sea turtle",
+    "category": "animal"
+  },
+  {
+    "name": "sea urchin",
+    "category": "animal"
+  },
+  {
+    "name": "sea worm",
+    "category": "animal"
+  },
+  {
+    "name": "serval",
+    "category": "animal"
+  },
+  {
+    "name": "shark",
+    "category": "animal"
+  },
+  {
+    "name": "sheep",
+    "category": "animal"
+  },
+  {
+    "name": "shrew",
+    "category": "animal"
+  },
+  {
+    "name": "shrimp",
+    "category": "animal"
+  },
+  {
+    "name": "siamang",
+    "category": "animal"
+  },
+  {
+    "name": "Siberian husky",
+    "category": "animal"
+  },
+  {
+    "name": "silkworm",
+    "category": "animal"
+  },
+  {
+    "name": "silverfish",
+    "category": "animal"
+  },
+  {
+    "name": "skink",
+    "category": "animal"
+  },
+  {
+    "name": "skipper",
+    "category": "animal"
+  },
+  {
+    "name": "skunk",
+    "category": "animal"
+  },
+  {
+    "name": "sloth",
+    "category": "animal"
+  },
+  {
+    "name": "slow worm",
+    "category": "animal"
+  },
+  {
+    "name": "slug",
+    "category": "animal"
+  },
+  {
+    "name": "Smilodon",
+    "category": "animal"
+  },
+  {
+    "name": "snail",
+    "category": "animal"
+  },
+  {
+    "name": "snake",
+    "category": "animal"
+  },
+  {
+    "name": "snapper",
+    "category": "animal"
+  },
+  {
+    "name": "snapping turtle",
+    "category": "animal"
+  },
+  {
+    "name": "snow goose",
+    "category": "animal"
+  },
+  {
+    "name": "snow leopard",
+    "category": "animal"
+  },
+  {
+    "name": "snowy owl",
+    "category": "animal"
+  },
+  {
+    "name": "softshell turtle",
+    "category": "animal"
+  },
+  {
+    "name": "sparrow",
+    "category": "animal"
+  },
+  {
+    "name": "spectacled caiman",
+    "category": "animal"
+  },
+  {
+    "name": "spectacled porpoise",
+    "category": "animal"
+  },
+  {
+    "name": "spider",
+    "category": "animal"
+  },
+  {
+    "name": "spiny anteater",
+    "category": "animal"
+  },
+  {
+    "name": "spiny lizard",
+    "category": "animal"
+  },
+  {
+    "name": "sponge",
+    "category": "animal"
+  },
+  {
+    "name": "spotted owl",
+    "category": "animal"
+  },
+  {
+    "name": "springtail",
+    "category": "animal"
+  },
+  {
+    "name": "squid",
+    "category": "animal"
+  },
+  {
+    "name": "squirrel",
+    "category": "animal"
+  },
+  {
+    "name": "starfish",
+    "category": "animal"
+  },
+  {
+    "name": "starling",
+    "category": "animal"
+  },
+  {
+    "name": "St. Bernard",
+    "category": "animal"
+  },
+  {
+    "name": "Stegosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "stingray",
+    "category": "animal"
+  },
+  {
+    "name": "stonefly",
+    "category": "animal"
+  },
+  {
+    "name": "stork",
+    "category": "animal"
+  },
+  {
+    "name": "sugar glider",
+    "category": "animal"
+  },
+  {
+    "name": "sunfish",
+    "category": "animal"
+  },
+  {
+    "name": "swallowtail butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "swan",
+    "category": "animal"
+  },
+  {
+    "name": "swift",
+    "category": "animal"
+  },
+  {
+    "name": "swordfish",
+    "category": "animal"
+  },
+  {
+    "name": "tadpole",
+    "category": "animal"
+  },
+  {
+    "name": "tamarin",
+    "category": "animal"
+  },
+  {
+    "name": "tanager",
+    "category": "animal"
+  },
+  {
+    "name": "tapir",
+    "category": "animal"
+  },
+  {
+    "name": "tarantula",
+    "category": "animal"
+  },
+  {
+    "name": "tarpon",
+    "category": "animal"
+  },
+  {
+    "name": "tarsier",
+    "category": "animal"
+  },
+  {
+    "name": "Tasmanian devil",
+    "category": "animal"
+  },
+  {
+    "name": "Tasmanian tiger",
+    "category": "animal"
+  },
+  {
+    "name": "termite",
+    "category": "animal"
+  },
+  {
+    "name": "tern",
+    "category": "animal"
+  },
+  {
+    "name": "terrier",
+    "category": "animal"
+  },
+  {
+    "name": "Teratosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "Thecodontosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "Thescelosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "three-toed sloth",
+    "category": "animal"
+  },
+  {
+    "name": "thresher shark",
+    "category": "animal"
+  },
+  {
+    "name": "thrip",
+    "category": "animal"
+  },
+  {
+    "name": "tick",
+    "category": "animal"
+  },
+  {
+    "name": "tiger",
+    "category": "animal"
+  },
+  {
+    "name": "tiger shark",
+    "category": "animal"
+  },
+  {
+    "name": "tiger swallowtail butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "toad",
+    "category": "animal"
+  },
+  {
+    "name": "Torosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "tortoise",
+    "category": "animal"
+  },
+  {
+    "name": "toucan",
+    "category": "animal"
+  },
+  {
+    "name": "Trachodon",
+    "category": "animal"
+  },
+  {
+    "name": "treefrog",
+    "category": "animal"
+  },
+  {
+    "name": "tree shrew",
+    "category": "animal"
+  },
+  {
+    "name": "tree sparrow",
+    "category": "animal"
+  },
+  {
+    "name": "Triceratops",
+    "category": "animal"
+  },
+  {
+    "name": "Trilobite",
+    "category": "animal"
+  },
+  {
+    "name": "Troodon",
+    "category": "animal"
+  },
+  {
+    "name": "trout",
+    "category": "animal"
+  },
+  {
+    "name": "trumpeter swan",
+    "category": "animal"
+  },
+  {
+    "name": "tuatara",
+    "category": "animal"
+  },
+  {
+    "name": "tsetse fly",
+    "category": "animal"
+  },
+  {
+    "name": "tuna",
+    "category": "animal"
+  },
+  {
+    "name": "tundra wolf",
+    "category": "animal"
+  },
+  {
+    "name": "turkey",
+    "category": "animal"
+  },
+  {
+    "name": "turtle",
+    "category": "animal"
+  },
+  {
+    "name": "T. rex",
+    "category": "animal"
+  },
+  {
+    "name": "Tyrannosaurus rex",
+    "category": "animal"
+  },
+  {
+    "name": "Ultrasaurus",
+    "category": "animal"
+  },
+  {
+    "name": "Ulysses Butterfky",
+    "category": "animal"
+  },
+  {
+    "name": "Umbrellabird",
+    "category": "animal"
+  },
+  {
+    "name": "ungulates",
+    "category": "animal"
+  },
+  {
+    "name": "uniramians",
+    "category": "animal"
+  },
+  {
+    "name": "urchin",
+    "category": "animal"
+  },
+  {
+    "name": "Utahraptor",
+    "category": "animal"
+  },
+  {
+    "name": "valley quail",
+    "category": "animal"
+  },
+  {
+    "name": "vampire bat",
+    "category": "animal"
+  },
+  {
+    "name": "veiled chameleon",
+    "category": "animal"
+  },
+  {
+    "name": "Velociraptor",
+    "category": "animal"
+  },
+  {
+    "name": "venomous animals",
+    "category": "animal"
+  },
+  {
+    "name": "vertebrates",
+    "category": "animal"
+  },
+  {
+    "name": "viceroy butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "vinegarroon",
+    "category": "animal"
+  },
+  {
+    "name": "viper",
+    "category": "animal"
+  },
+  {
+    "name": "Virginia opossum",
+    "category": "animal"
+  },
+  {
+    "name": "Vulcanodon",
+    "category": "animal"
+  },
+  {
+    "name": "vulture",
+    "category": "animal"
+  },
+  {
+    "name": "walkingstick",
+    "category": "animal"
+  },
+  {
+    "name": "wallaby",
+    "category": "animal"
+  },
+  {
+    "name": "walrus",
+    "category": "animal"
+  },
+  {
+    "name": "warthog",
+    "category": "animal"
+  },
+  {
+    "name": "wasp",
+    "category": "animal"
+  },
+  {
+    "name": "waterbug",
+    "category": "animal"
+  },
+  {
+    "name": "water moccasin",
+    "category": "animal"
+  },
+  {
+    "name": "water strider",
+    "category": "animal"
+  },
+  {
+    "name": "weasel",
+    "category": "animal"
+  },
+  {
+    "name": "Weddell seal",
+    "category": "animal"
+  },
+  {
+    "name": "weevil",
+    "category": "animal"
+  },
+  {
+    "name": "western meadowlark",
+    "category": "animal"
+  },
+  {
+    "name": "western spotted owl",
+    "category": "animal"
+  },
+  {
+    "name": "west highland white terrier",
+    "category": "animal"
+  },
+  {
+    "name": "whale",
+    "category": "animal"
+  },
+  {
+    "name": "whale shark",
+    "category": "animal"
+  },
+  {
+    "name": "whelk",
+    "category": "animal"
+  },
+  {
+    "name": "whippet",
+    "category": "animal"
+  },
+  {
+    "name": "whip scorpion",
+    "category": "animal"
+  },
+  {
+    "name": "white Bengal tiger",
+    "category": "animal"
+  },
+  {
+    "name": "white-breasted nuthatch",
+    "category": "animal"
+  },
+  {
+    "name": "white dove",
+    "category": "animal"
+  },
+  {
+    "name": "white pelican",
+    "category": "animal"
+  },
+  {
+    "name": "white rhinoceros",
+    "category": "animal"
+  },
+  {
+    "name": "white-spotted dolphin",
+    "category": "animal"
+  },
+  {
+    "name": "white-tailed deer",
+    "category": "animal"
+  },
+  {
+    "name": "white tiger",
+    "category": "animal"
+  },
+  {
+    "name": "wild cat",
+    "category": "animal"
+  },
+  {
+    "name": "wild dog",
+    "category": "animal"
+  },
+  {
+    "name": "wildebeest",
+    "category": "animal"
+  },
+  {
+    "name": "wolf",
+    "category": "animal"
+  },
+  {
+    "name": "wolverine",
+    "category": "animal"
+  },
+  {
+    "name": "wombat",
+    "category": "animal"
+  },
+  {
+    "name": "woodchuck",
+    "category": "animal"
+  },
+  {
+    "name": "woodland caribou",
+    "category": "animal"
+  },
+  {
+    "name": "wood louse",
+    "category": "animal"
+  },
+  {
+    "name": "woodpecker",
+    "category": "animal"
+  },
+  {
+    "name": "woolly bear caterpillar",
+    "category": "animal"
+  },
+  {
+    "name": "woolly mammoth",
+    "category": "animal"
+  },
+  {
+    "name": "woolly rhinoceros",
+    "category": "animal"
+  },
+  {
+    "name": "working dog",
+    "category": "animal"
+  },
+  {
+    "name": "worm",
+    "category": "animal"
+  },
+  {
+    "name": "wren",
+    "category": "animal"
+  },
+  {
+    "name": "Xenarthra (Edentata)",
+    "category": "animal"
+  },
+  {
+    "name": "xenops",
+    "category": "animal"
+  },
+  {
+    "name": "Xiaosaurus",
+    "category": "animal"
+  },
+  {
+    "name": "yak",
+    "category": "animal"
+  },
+  {
+    "name": "yellowjacket",
+    "category": "animal"
+  },
+  {
+    "name": "yellow mealworm",
+    "category": "animal"
+  },
+  {
+    "name": "yellow mongoose",
+    "category": "animal"
+  },
+  {
+    "name": "Yorkshire terrier",
+    "category": "animal"
+  },
+  {
+    "name": "zebra",
+    "category": "animal"
+  },
+  {
+    "name": "zebra bullhead shark",
+    "category": "animal"
+  },
+  {
+    "name": "zebra longwing butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "zebra swallowtail butterfly",
+    "category": "animal"
+  },
+  {
+    "name": "zooplankton",
+    "category": "animal"
+  },
+  {
+    "name": "zorilla",
+    "category": "animal"
+  },
+  {
+    "name": "zorro",
+    "category": "animal"
+  }
+]
