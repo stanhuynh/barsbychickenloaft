@@ -99,12 +99,18 @@ var getWordType = function(word, callback){
   });
 
   // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-  categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
-    if (err) return handleError(err);
-    // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
-    console.log(categoryFound);
-    callback(categoryFound);
-  });
+  // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
+  //   if (err) return handleError(err);
+  //   console.log(categoryFound);
+  //   callback(categoryFound);
+  // });
+  // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+  // categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
+  //   if (err) return handleError(err);
+  //   // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+  //   console.log(categoryFound);
+  //   callback(categoryFound);
+  // });
 };
 
 var getRhyme = function(senderID, word, callback) {
