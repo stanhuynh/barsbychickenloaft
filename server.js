@@ -122,7 +122,7 @@ var spitLine = function(lineLength){
 
     var rannum = Math.floor(Math.random()*(sentences.length-1));
     sentence = sentences[rannum];
-    console.log('Sentence: '+sentence);
+    console.log('Sentence: '+ JSON.stringify(sentence));
   });
 
 }
