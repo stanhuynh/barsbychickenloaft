@@ -11,7 +11,8 @@ var pass = process.env.PASS;
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 var db = mongoose.connection;
 var nounSchema, verbSchema, adjectiveSchema;
-var nouns, verbs, adjectives;
+var Nouns, Verbs, Adjectives;
+var food, animal, sport;
 
 db.once('open', function() {
   nounSchema = Schema({
@@ -29,9 +30,10 @@ db.once('open', function() {
     type: String
   });
 
-  nouns = mongoose.model('nouns', nounSchema);
-  verb = mongoose.model('verbs', verbSchema);
-  adjective = mongoose.model('adjectives', adjectiveSchema);
+  Nouns = mongoose.model('nouns', nounSchema);
+  Verb = mongoose.model('verbs', verbSchema);
+  Adjective = mongoose.model('adjectives', adjectiveSchema);
+  food = new Nouns({ type: 'food' });
 });
 
 app.use(bodyparser.json());
@@ -70,6 +72,14 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
   }
 });
+
+var getWordType = function(word, callback){
+  // assign a function to the "methods" object of our animalSchema
+  console.log('before find '+ word);
+  food.findSimilarTypes(function (err, foodss) {
+    console.log(foodss); // woof
+  });
+};
 
 var getRhyme = function(senderID, word, callback) {
   request({
@@ -124,6 +134,7 @@ function receivedMessage(event) {
     var messageText = message.text;
     var stringArray = messageText.split(" ");
     var lastWord = stringArray[stringArray.length-1];
+    var wordCount = stringArray.length-1;
 
     console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
