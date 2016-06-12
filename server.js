@@ -107,7 +107,7 @@ var getWordType = function(word, callback){
     }
     console.log('detected category: '+ categoryFound);
     console.log('typeof category: '+ typeof categoryFound);
-    callback(categoryFound.type);
+    callback(categoryFound[0].type);
   });
 
 };
