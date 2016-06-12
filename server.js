@@ -132,7 +132,7 @@ var spitLine = function(lineLength, cb){
 
 }
 
-var getRhyme = function(senderID, word, category, callback) {
+var getRhyme = function(senderID, word, category, template, callback) {
 
     request({
       uri: 'https://api.datamuse.com/words',
@@ -143,8 +143,13 @@ var getRhyme = function(senderID, word, category, callback) {
           // Check to make sure there are rhymes to the last word
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
+            var word = json[Math.floor(Math.random()*(json.length-1))].word;
 
-            callback(senderID, category, json[Math.floor(Math.random()*(json.length-1))].word);
+            template.text.append(word);
+            var bar = template.text.join(' ');
+
+
+            callback(senderID, category, bar);
           }
         } else {
           console.error("Unable to get rhyme.");
@@ -158,7 +163,7 @@ var getRhyme = function(senderID, word, category, callback) {
 // Callback function when rhyme has been retrieved
 var sendRhymeToUser = function(senderID, category, rhyme) {
   // console.log('rhyme: ' + rhyme);
-  var messageText = category + ' ' + rhyme;
+  var messageText = rhyme;
   console.log('at sendRhymeToUser '+ category);
   var json = {
     recipient: { id: senderID },
@@ -300,7 +305,7 @@ function receivedMessage(event) {
       getWordType(lastWord, function(category){
         fillTemplate(sentence, category, function(template) {
           console.log(template);
-          getRhyme(senderID, lastWord, category, sendRhymeToUser);
+          getRhyme(senderID, lastWord, category, template, sendRhymeToUser);
         });
       });
     });
