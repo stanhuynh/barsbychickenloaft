@@ -181,7 +181,7 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 
 function fillTemplate(template, category, cb) {
   //pull template from db
-  for each (var i in template.index) {
+  for(var i =0; i<template.index.length; i++) {
     switch(i) {
       case 0:
         console.log("insert noun");
