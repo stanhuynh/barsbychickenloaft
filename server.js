@@ -325,6 +325,7 @@ function receivedMessage(event) {
 
       // This will get rhyme from datamuse and call callback sendRhymeToUser
       getWordType(lastWord, function(category){
+        category = category === 'sports' ? 'sport':category;
         fillTemplate(sentence, category, function(template) {
           console.log(template);
           getRhyme(senderID, lastWord, category, template, sendRhymeToUser);
