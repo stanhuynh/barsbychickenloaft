@@ -35,7 +35,7 @@ db.once('open', function() {
   Adjective = mongoose.model('adjectives', adjectiveSchema);
     // assign a function to the "methods" object of our animalSchema
   nounSchema.methods.findSimilarTypes = function (cb) {
-    return this.model('Animal').find({ type: this.type }, cb);
+    return this.model('nouns').find({ type: this.type }, cb);
   };
   Nouns = mongoose.model('nouns', nounSchema);
   food = new Nouns({ type: 'food' });
