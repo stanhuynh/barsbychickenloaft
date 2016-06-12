@@ -122,7 +122,9 @@ var spitLine = function(lineLength){
 
     var rannum = Math.floor(Math.random()*(sentences.length-1));
     sentence = sentences[rannum];
-    console.log('Sentence: '+ JSON.stringify(sentence));
+    // console.log('Sentence: '+ JSON.stringify(sentence));
+
+    return sentence;
   });
 
 }
@@ -138,7 +140,7 @@ var getRhyme = function(senderID, word, category, callback) {
           // Check to make sure there are rhymes to the last word
           if(body !== undefined && body !== null && body !== '[]'){
             var json = JSON.parse(body);
-            spitLine(3);
+
             callback(senderID, category, json[Math.floor(Math.random()*(json.length-1))].word);
           }
         } else {
@@ -185,6 +187,10 @@ function receivedMessage(event) {
     var stringArray = messageText.split(" ");
     var lastWord = stringArray[stringArray.length-1];
     var wordCount = stringArray.length-1;
+
+    var sentence = spitLine(stringArray.length);
+    console.log('Sentence: '+ JSON.stringify(sentence));
+
 
     console.log("Received message for user %d and page %d at %d with message: "+messageText,
     senderID, recipientID, timeOfMessage);
