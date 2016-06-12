@@ -91,8 +91,12 @@ var getWordType = function(word, callback){
   // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
   categoriesCompare.findByName('algae', function (err, categoryFound) {
+    if(err) {
+      console.log('getWordType failed categoryFound set to null');
+      callback('null');
+    }
     console.log(categoryFound);
-    // callback();
+    callback(categoryFound);
   });
   // var value = new categoriesCompare({ name: word });
   //
@@ -115,7 +119,7 @@ var getWordType = function(word, callback){
   // });
 };
 
-var getRhyme = function(senderID, word, callback) {
+var getRhyme = function(senderID, word, category, callback) {
 
     request({
       uri: 'https://api.datamuse.com/words',
@@ -179,8 +183,8 @@ function receivedMessage(event) {
     senderID, recipientID, timeOfMessage);
 
     // This will get rhyme from datamuse and call callback sendRhymeToUser
-    getWordType(lastWord, function(){
-      getRhyme(senderID, lastWord, sendRhymeToUser);
+    getWordType(lastWord, function(category){
+      getRhyme(senderID, lastWord, category, sendRhymeToUser);
     });
   } else {
     console.error('damn dawg');
