@@ -41,7 +41,7 @@ app.use(bodyparser.json());
 app.get('/', function(req, res){
   res.send('hello world');
   var query = nouns.find({type:'food'});
-  query.exec(display_results(err, results) {
+  query.exec(function(err, results) {
     if (!err){
       results.forEach(function(result) {
         res.send(
@@ -49,7 +49,7 @@ app.get('/', function(req, res){
         )
       })
     }
-  })
+  });
 
 });
 
