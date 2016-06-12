@@ -42,6 +42,11 @@ db.once('open', function() {
     return this.model('verbs').find({ type: this.type}, cb);
   };
 
+  // assign a function to the "methods" object of our animalSchema
+  categoriesCompareSchema.methods.findSimilarNames = function (cb) {
+    return this.model('categoriesCompare').find({ name: this.name }, cb);
+  }
+
   categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
 
@@ -50,8 +55,8 @@ db.once('open', function() {
   verbs = mongoose.model('verbs', verbSchema);
   adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
-
   categoriesCompare = mongoose.model('categoriesCompare', categoriesCompareSchema);
+
 });
 
 app.use(bodyparser.json());
@@ -87,7 +92,11 @@ var getWordType = function(word, callback){
   //   console.log(categoryFound);
   //   callback();
   // });
+  var value = new categoriesCompare({ name: word });
 
+  value.findSimilarNames(function (err, found) {
+    console.log(found); // woof
+  });
 
   // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
   categoriesCompare.findOne({ 'name': 'maggot' }, 'name type', function (err, categoryFound) {
