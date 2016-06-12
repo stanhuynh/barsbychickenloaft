@@ -15,7 +15,7 @@ var nouns, verbs, adjectives;
 var food, animal, sport;
 
 db.once('open', function() {
-  catCompareSchema = new Schema({
+  categoriesCompareSchema = new Schema({
     name: String,
     type: String
   });
@@ -39,6 +39,7 @@ db.once('open', function() {
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
+
   categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
   };
@@ -46,7 +47,7 @@ db.once('open', function() {
   verbs = mongoose.model('verbs', verbSchema);
   adjectives = mongoose.model('adjectives', adjectiveSchema);
   nouns = mongoose.model('nouns', nounSchema);
-  categoriesCompare = mongoose.model('nouns', categoriesCompareSchema);
+  categoriesCompare = mongoosge.model('nouns', categoriesCompareSchema);
 });
 
 app.use(bodyparser.json());
