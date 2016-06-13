@@ -3,46 +3,45 @@ var app = express();
 var bodyparser = require('body-parser');
 var request = require('request');
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
 var user = process.env.USER;
 var pass = process.env.PASS;
 
+// DATABASE SECTION:
+// Connect to the MongoLab Database
+// Define the model  that will be used throughout the bot to get specific
 mongoose.connect('mongodb://'+user+':'+pass+'@ds013414.mlab.com:13414/barsbychickenloaft');
 var db = mongoose.connection;
+var Schema = mongoose.Schema;
 var nounSchema, verbSchema, adjectiveSchema, categoriesCompareSchema;
 var nouns, verbs, adjectives, categoriesCompare;
 var food, animal, sport;
 
 db.once('open', function() {
+  // Define the Schemas that are used
   categoriesCompareSchema = new Schema({
     name: String,
     type: String
   });
-
   categoriesCompareSchema.set('collection', 'categoriesCompare');
-
   nounSchema = new Schema({
     name: String,
     type: String
   });
-
   verbSchema = new Schema({
     name: String,
     type: String
   });
-
   adjectiveSchema = new Schema({
     name: String
   });
-
   templateSchema = new Schema({
     length: Number,
     index: Array,
     text: Array
   });
 
-  // assign a function to the "methods" object of our animalSchema
+  // assign a function to the "methods" object of our schemes to enable custom queries
   nounSchema.methods.findSimilarTypes = function (cb) {
     return this.model('nouns').find({ type: this.type }, cb);
   };
@@ -58,17 +57,12 @@ db.once('open', function() {
   adjectiveSchema.methods.getAll = function (cb) {
     return this.model('adjectives').find({}, cb);
   }
-
-  // assign a function to the "methods" object of our animalSchema
   categoriesCompareSchema.methods.findSimilarNames = function (cb) {
     return this.model('categoriesCompare').find({ name: this.name }, cb);
   }
-
   categoriesCompareSchema.statics.findByName = function (name, cb) {
     return this.find({ name: new RegExp(name, 'i') }, cb);
-
   };
-
   templateSchema.methods.findLength = function(cb) {
     return this.model('templates').find({ length: this.length }, cb);
   }
@@ -80,6 +74,7 @@ db.once('open', function() {
   templates = mongoose.model('templates', templateSchema);
 });
 
+// APP SECTION
 app.use(bodyparser.json());
 
 app.get('/', function(req, res){
@@ -106,8 +101,9 @@ app.post('/webhook', function (req, res) {
   }
 });
 
+// CONTROLLER/LOGIC SECTION
+// This classifies the last word retrieved from the user's bar
 var getWordType = function(word, callback){
-  // assign a function to the "methods" object of our animalSchema
   console.log('before find '+ word);
   categoriesCompare.findByName(word, function (err, categoryFound) {
     if(err) {
@@ -118,21 +114,15 @@ var getWordType = function(word, callback){
     console.log('typeof category: '+ typeof categoryFound);
     callback(categoryFound[0].type);
   });
-
 };
 
-//
+// This determines from the templates which line from our preset templates
+// according to the number of words our bar should contain to use
 var spitLine = function(lineLength, cb){
-  // Pick at random which line from our preset templates to use
   var instance = new templates({length: lineLength});
-
   instance.findLength(function (err, sentences) {
-    // console.log(JSON.stringify(sentences));
-
     var rannum = Math.floor(Math.random()*(sentences.length-1));
     sentence = sentences[rannum];
-    // console.log('Sentence: '+ JSON.stringify(sentence));
-
     cb(sentence);
   });
 
@@ -168,7 +158,6 @@ var getRhyme = function(senderID, word, category, template, callback) {
 
 // Callback function when rhyme has been retrieved
 var sendRhymeToUser = function(senderID, category, rhyme) {
-  // console.log('rhyme: ' + rhyme);
   var messageText = rhyme;
   console.log('at sendRhymeToUser '+ category);
   var json = {
@@ -255,54 +244,13 @@ function fillTemplate(template, category, cb) {
 
 
   },
+
+  // Callback function when the Async loop has finished
+  // CB function Will be get rhyme
   function(){console.log('cycle ended');
     cb(template);}
-);
+  );
 
-
-//   for(var i =0; i<template.index.length; i++) {
-//     switch(template.text[template.index[i]]) {
-//       case 0:
-//         console.log("insert noun");
-//         var n;
-//         if(category === 'undefined')
-//           n = new nouns({})
-//         else
-//           n = new nouns({type: category});
-//         n.findSimilarTypes(function(err, li) {
-//           // filter here
-//           var item = li[Math.floor(Math.random() * (li.length - 1))];
-//           template.text[template.index[i]] = item.name;
-//           console.log(item);
-//         });
-//         break;
-//       case 1:
-//         console.log("insert verb");
-//         var v;
-//         if(category === undefined)
-//           v = new nouns({});
-//         else
-//           v= new verbs({type: category});
-//         v.findSimilarTypes(function(err, li) {
-//           // filter here
-//           var item = li[Math.floor(Math.random() * (li.length - 1))];
-//           template.text[template.index[i]] = item.name;
-//           console.log(item);
-//         });
-//         break;
-//       case 2:
-//         console.log("insert adjective");
-//         var a = new adjectives();
-//         a.getAll(function(err, li) {
-//           var item = li[Math.floor(Math.random() * (li.length - 1))];
-//           template.text[template.index[i]] = item.name;
-// console.log(item);
-//         });
-//         break;
-//     }
-//   }
-  // console.log(template);
-  // return template;
 }
 
 function receivedMessage(event) {
@@ -323,16 +271,12 @@ function receivedMessage(event) {
       console.log("Received message for user %d and page %d at %d with message: "+messageText,
       senderID, recipientID, timeOfMessage);
 
-      // This will get rhyme from datamuse and call callback sendRhymeToUser
       getWordType(lastWord, function(category){
         fillTemplate(sentence, category, function(template) {
-          console.log(template);
           getRhyme(senderID, lastWord, category, template, sendRhymeToUser);
         });
       });
     });
-
-
   } else {
     console.error('damn dawg');
   }
@@ -341,6 +285,7 @@ function receivedMessage(event) {
 app.listen(process.env.PORT);
 
 
+// Asynchronous Loop is used to ensure the specific requests are handled
 function asyncLoop(iterations, func, callback) {
     var index = 0;
     var done = false;
