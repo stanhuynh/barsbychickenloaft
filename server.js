@@ -265,7 +265,7 @@ function fillTemplate(template, category, cb) {
     function(){
       cb(template);}
     );
-  else{
+  }else{
     sendRhymeToUser(senderID, category, "Sorry, something went wrong somewhere");
   }
 }
