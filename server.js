@@ -201,7 +201,8 @@ function fillTemplate(template, category, cb) {
           n.getAll(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log(item);
+            console.log('list of item' + li);
+            console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
           });
@@ -210,7 +211,8 @@ function fillTemplate(template, category, cb) {
           n.findSimilarTypes(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log(item);
+            console.log('list of item' + li);
+            console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
           });
@@ -224,7 +226,8 @@ function fillTemplate(template, category, cb) {
           v.getAll(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log(item);
+            console.log('list of item' + li);
+            console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
           });
@@ -245,7 +248,8 @@ function fillTemplate(template, category, cb) {
         var a = new adjectives();
         a.getAll(function(err, li) {
           var item = li[Math.floor(Math.random() * li.length )];
-          console.log(item);
+          console.log('list of item' + li);
+          console.log('item' + item);
           template.text[template.index[loop.iteration()]] = item.name;
           loop.next();
         });
