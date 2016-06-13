@@ -131,7 +131,7 @@ var spitLine = function(lineLength, cb){
   instance.findLength(function (err, sentences) {
     var randNum = Math.floor(Math.random()*(sentences.length-1));
     var sentence = sentences[randNum];
-    console.log('sentence: '+ JSON.stringify(sentence.text));
+    // console.log('sentence: '+ JSON.stringify(sentence.text));
     cb(sentence);
   });
 }
