@@ -210,8 +210,7 @@ function fillTemplate(template, category, cb) {
           n.findSimilarTypes(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log('list of item' + li);
-            console.log('list of item type' + typeof li);
+            console.log('list of item' + JSON.stringify(li));
             console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
@@ -235,8 +234,7 @@ function fillTemplate(template, category, cb) {
           v.findSimilarTypes(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log('list of item' + li);
-            console.log('list of item type' + typeof li);
+            console.log('list of item' + JSON.stringify(li));
             console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
