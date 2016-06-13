@@ -120,7 +120,7 @@ var getWordType = function(word, callback){
     else
       category = 'undefined';
     console.log('detected category: '+ category);
-    callback(categoryFound);
+    callback(category);
   });
 };
 
