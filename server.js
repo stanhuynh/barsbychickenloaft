@@ -244,12 +244,12 @@ function fillTemplate(template, category, cb) {
         });
         break;
     }
-    console.log('current iteration: 'loop.iteration());
+    console.log('current iteration: ' + loop.iteration());
 
   },
   // Callback function when the Async loop has finished
   // CB function Will be get rhyme
-  function(){console.log('cycle ended');
+  function(){
     cb(template);}
   );
 
