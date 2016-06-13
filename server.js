@@ -110,14 +110,8 @@ var getWordType = function(word, callback){
       console.log('get word type failed');
       callback('null');
     }
-<<<<<<< HEAD
     console.log('detected category: '+ categoryFound[0].type);
     callback(categoryFound[0].type);
-=======
-    console.log('detected category: '+ categoryFound);
-    console.log('typeof category: '+ typeof categoryFound);
-    callback(category = categoryFound[0] !== undefined ? categoryFound[0].type : 'undefined');
->>>>>>> a0dd8ad8637e0e4750037731ce059a59d7670ded
   });
 };
 
