@@ -94,7 +94,7 @@ app.post('/webhook', function (req, res) {
   if (data.object == 'page') {
     // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
-    console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1]));
+    console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message.text));
     receivedMessage(entry.messaging[entry.messaging.length-1]);
 
     res.sendStatus(200);
@@ -200,7 +200,7 @@ function fillTemplate(template, category, cb) {
           n = new nouns({})
           n.getAll(function(err, li) {
             // filter here
-            var item = li[Math.floor(Math.random() * li.length - 1)];
+            var item = li[Math.floor(Math.random() * li.length )];
             console.log(item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
@@ -209,7 +209,7 @@ function fillTemplate(template, category, cb) {
           n = new nouns({type: category});
           n.findSimilarTypes(function(err, li) {
             // filter here
-            var item = li[Math.floor(Math.random() * li.length - 1)];
+            var item = li[Math.floor(Math.random() * li.length )];
             console.log(item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
@@ -223,7 +223,7 @@ function fillTemplate(template, category, cb) {
           v = new verbs({});
           v.getAll(function(err, li) {
             // filter here
-            var item = li[Math.floor(Math.random() * li.length - 1)];
+            var item = li[Math.floor(Math.random() * li.length )];
             console.log(item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
@@ -232,7 +232,7 @@ function fillTemplate(template, category, cb) {
           v= new verbs({type: category});
           v.findSimilarTypes(function(err, li) {
             // filter here
-            var item = li[Math.floor(Math.random() * li.length - 1)];
+            var item = li[Math.floor(Math.random() * li.length )];
             console.log(item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
@@ -243,7 +243,7 @@ function fillTemplate(template, category, cb) {
         console.log("insert adjective");
         var a = new adjectives();
         a.getAll(function(err, li) {
-          var item = li[Math.floor(Math.random() * li.length - 1)];
+          var item = li[Math.floor(Math.random() * li.length )];
           console.log(item);
           template.text[template.index[loop.iteration()]] = item.name;
           loop.next();
