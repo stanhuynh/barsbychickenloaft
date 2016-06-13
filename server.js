@@ -233,7 +233,8 @@ function fillTemplate(template, category, cb) {
           v.findSimilarTypes(function(err, li) {
             // filter here
             var item = li[Math.floor(Math.random() * li.length )];
-            console.log(item);
+            console.log('list of item' + li);
+            console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
           });
