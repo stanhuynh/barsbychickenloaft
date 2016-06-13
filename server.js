@@ -95,7 +95,7 @@ app.post('/webhook', function (req, res) {
     // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
     if(JSON.stringify(entry.messaging[entry.messaging.length-1].message) !== 'undefined'){
-      console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message.text));
+      console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message));
       receivedMessage(entry.messaging[entry.messaging.length-1]);
     }else
       console.log('error');
