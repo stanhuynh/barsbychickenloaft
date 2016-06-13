@@ -94,7 +94,7 @@ app.post('/webhook', function (req, res) {
   if (data.object == 'page') {
     // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
-    console.log('messaging received: ' + JSON.stringify(entry.messaging.message.text));
+    console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message.text));
     receivedMessage(entry.messaging[entry.messaging.length-1]);
 
     res.sendStatus(200);
