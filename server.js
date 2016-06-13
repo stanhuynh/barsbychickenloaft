@@ -110,6 +110,12 @@ var getWordType = function(word, callback){
       console.log('get word type failed');
       callback('null');
     }
+    // var category = category === 'sports' ? 'sport':category;
+    var category;
+    if(categoryFound)
+      category = categoryFound[0].type;
+    else
+      category = 'undefined';
     console.log('detected category: '+ categoryFound[0].type);
     callback(categoryFound[0].type);
   });
@@ -269,7 +275,6 @@ function receivedMessage(event) {
 
     spitLine(stringArray.length, function (sentence) {
       getWordType(lastWord, function(category){
-        category = category === 'sports' ? 'sport':category;
         fillTemplate(sentence, category, function(template) {
           getRhyme(senderID, lastWord, category, template, sendRhymeToUser);
         });
