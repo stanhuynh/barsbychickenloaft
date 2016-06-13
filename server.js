@@ -94,10 +94,13 @@ app.post('/webhook', function (req, res) {
   if (data.object == 'page') {
     // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
-    console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message.text));
-    receivedMessage(entry.messaging[entry.messaging.length-1]);
+    if(entry){
+      console.log('messaging received: ' + JSON.stringify(entry.messaging[entry.messaging.length-1].message.text));
+      receivedMessage(entry.messaging[entry.messaging.length-1]);
+    }else
+      console.log('error');
 
-    res.sendStatus(200);
+      res.sendStatus(200);
   }
 });
 
