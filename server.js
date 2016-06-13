@@ -194,6 +194,7 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 // i) 0 = noun, 1 = verb, 2 = adjective
 function fillTemplate(template, category, cb) {
   //pull template from db
+  if(template !== undefined)
   asyncLoop(template.index.length, function(loop) {
     switch(template.text[template.index[loop.iteration()]]) {
       case '0':
