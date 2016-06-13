@@ -2,4 +2,7 @@
 
 ----------
 
-A rapping messenger bot created at Angel Hack Toronto 2016.  Chat with the bot by logging into your facebook page and sending it a page giving it a line like, "One fish, two fish" and see what our bot raps back to you!
+A rapping messenger bot created at Angel Hack Toronto 2016.  Chat with the bot by:  
+ 1. Logging into your Facebook account
+ 2. Accessing our [Facebook Page](https://www.facebook.com/barsbot)
+ 3. Sending it a line like, "One fish, two fish" and see what our bot raps back to you!
