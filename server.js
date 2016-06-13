@@ -116,7 +116,7 @@ var getWordType = function(word, callback){
     // var category = category === 'sports' ? 'sport':category;
     var category;
     if(categoryFound)
-      category = categoryFound[0].type === 'sports' ? 'sport': categoryFound[0].type;
+      category =  categoryFound[0].type;
     else
       category = 'undefined';
     console.log('detected category: '+ category);
