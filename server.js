@@ -194,78 +194,80 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
 // i) 0 = noun, 1 = verb, 2 = adjective
 function fillTemplate(template, category, cb) {
   //pull template from db
-  if(template !== undefined)
-  asyncLoop(template.index.length, function(loop) {
-    switch(template.text[template.index[loop.iteration()]]) {
-      case '0':
-        console.log("insert noun");
-        var n;
-        if(category === 'undefined'){
-          n = new nouns({})
-          n.getAll(function(err, li) {
-            // filter here
+  if(template !== undefined){
+    asyncLoop(template.index.length, function(loop) {
+      switch(template.text[template.index[loop.iteration()]]) {
+        case '0':
+          console.log("insert noun");
+          var n;
+          if(category === 'undefined'){
+            n = new nouns({})
+            n.getAll(function(err, li) {
+              // filter here
+              var item = li[Math.floor(Math.random() * li.length )];
+              console.log('item' + item);
+              template.text[template.index[loop.iteration()]] = item.name;
+              loop.next();
+            });
+          } else {
+            n = new nouns({type: category});
+            n.findSimilarTypes(function(err, li) {
+              // filter here
+              var item = li[Math.floor(Math.random() * li.length )];
+              console.log('list of item' + JSON.stringify(li));
+              console.log('item' + item);
+              template.text[template.index[loop.iteration()]] = item.name;
+              loop.next();
+            });
+          }
+          break;
+        case '1':
+          console.log("insert verb");
+          var v;
+          if(category === 'undefined') {
+            v = new verbs({});
+            v.getAll(function(err, li) {
+              // filter here
+              var item = li[Math.floor(Math.random() * li.length )];
+              console.log('item' + item);
+              template.text[template.index[loop.iteration()]] = item.name;
+              loop.next();
+            });
+          } else {
+            v= new verbs({type: category});
+            v.findSimilarTypes(function(err, li) {
+              // filter here
+              var item = li[Math.floor(Math.random() * li.length )];
+              console.log('list of item' + JSON.stringify(li));
+              console.log('item' + item);
+              template.text[template.index[loop.iteration()]] = item.name;
+              loop.next();
+            });
+          }
+          break;
+        case '2':
+          console.log("insert adjective");
+          var a = new adjectives();
+          a.getAll(function(err, li) {
             var item = li[Math.floor(Math.random() * li.length )];
+            console.log('list of item' + li);
             console.log('item' + item);
             template.text[template.index[loop.iteration()]] = item.name;
             loop.next();
           });
-        } else {
-          n = new nouns({type: category});
-          n.findSimilarTypes(function(err, li) {
-            // filter here
-            var item = li[Math.floor(Math.random() * li.length )];
-            console.log('list of item' + JSON.stringify(li));
-            console.log('item' + item);
-            template.text[template.index[loop.iteration()]] = item.name;
-            loop.next();
-          });
-        }
-        break;
-      case '1':
-        console.log("insert verb");
-        var v;
-        if(category === 'undefined') {
-          v = new verbs({});
-          v.getAll(function(err, li) {
-            // filter here
-            var item = li[Math.floor(Math.random() * li.length )];
-            console.log('item' + item);
-            template.text[template.index[loop.iteration()]] = item.name;
-            loop.next();
-          });
-        } else {
-          v= new verbs({type: category});
-          v.findSimilarTypes(function(err, li) {
-            // filter here
-            var item = li[Math.floor(Math.random() * li.length )];
-            console.log('list of item' + JSON.stringify(li));
-            console.log('item' + item);
-            template.text[template.index[loop.iteration()]] = item.name;
-            loop.next();
-          });
-        }
-        break;
-      case '2':
-        console.log("insert adjective");
-        var a = new adjectives();
-        a.getAll(function(err, li) {
-          var item = li[Math.floor(Math.random() * li.length )];
-          console.log('list of item' + li);
-          console.log('item' + item);
-          template.text[template.index[loop.iteration()]] = item.name;
-          loop.next();
-        });
-        break;
-    }
-    console.log('current iteration: ' + loop.iteration());
+          break;
+      }
+      console.log('current iteration: ' + loop.iteration());
 
-  },
-  // Callback function when the Async loop has finished
-  // CB function Will be get rhyme
-  function(){
-    cb(template);}
-  );
-
+    },
+    // Callback function when the Async loop has finished
+    // CB function Will be get rhyme
+    function(){
+      cb(template);}
+    );
+  else{
+    sendRhymeToUser(senderID, category, "Sorry, something went wrong somewhere");
+  }
 }
 
 function receivedMessage(event) {
