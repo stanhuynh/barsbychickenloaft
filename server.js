@@ -102,7 +102,8 @@ app.post('/webhook', function (req, res) {
 });
 
 // CONTROLLER/LOGIC SECTION
-// This classifies the last word retrieved from the user's bar
+// This classifies the last word retrieved from the user's bar into different
+// categories to be used.
 var getWordType = function(word, callback){
   console.log('before find '+ word);
   categoriesCompare.findByName(word, function (err, categoryFound) {
