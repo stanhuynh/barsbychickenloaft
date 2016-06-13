@@ -94,7 +94,7 @@ app.post('/webhook', function (req, res) {
   if (data.object == 'page') {
     // console.log('Data Entry: '+JSON.stringify(data.entry));
     var entry = data.entry[data.entry.length-1];
-    console.log('Messaging: '+JSON.stringify(entry.messaging));
+    console.log('messaging received: ' + JSON.stringify(entry.messaging.message.text));
     receivedMessage(entry.messaging[entry.messaging.length-1]);
 
     res.sendStatus(200);
@@ -105,14 +105,12 @@ app.post('/webhook', function (req, res) {
 // This classifies the last word retrieved from the user's bar into different
 // categories to be used.
 var getWordType = function(word, callback){
-  console.log('before find '+ word);
   categoriesCompare.findByName(word, function (err, categoryFound) {
     if(err) {
-      console.log('getWordType failed categoryFound set to null');
+      console.log('get word type failed');
       callback('null');
     }
     console.log('detected category: '+ categoryFound[0].type);
-    console.log('typeof category: '+ typeof categoryFound);
     callback(categoryFound[0].type);
   });
 };
@@ -122,11 +120,11 @@ var getWordType = function(word, callback){
 var spitLine = function(lineLength, cb){
   var instance = new templates({length: lineLength});
   instance.findLength(function (err, sentences) {
-    var rannum = Math.floor(Math.random()*(sentences.length-1));
-    sentence = sentences[rannum];
+    var randNum = Math.floor(Math.random()*(sentences.length-1));
+    var sentence = sentences[randNum];
+    console.log('sentence: '+ JSON.stringify(sentence.text));
     cb(sentence);
   });
-
 }
 
 var getRhyme = function(senderID, word, category, template, callback) {
@@ -180,6 +178,8 @@ var sendRhymeToUser = function(senderID, category, rhyme) {
   });
 };
 
+// Fill the template's index's that need to be replaced
+// i) 0 = noun, 1 = verb, 2 = adjective
 function fillTemplate(template, category, cb) {
   //pull template from db
   asyncLoop(template.index.length, function(loop) {
@@ -241,11 +241,9 @@ function fillTemplate(template, category, cb) {
         });
         break;
     }
-    console.log(loop.iteration());
-
+    console.log('current iteration: 'loop.iteration());
 
   },
-
   // Callback function when the Async loop has finished
   // CB function Will be get rhyme
   function(){console.log('cycle ended');
@@ -267,11 +265,6 @@ function receivedMessage(event) {
     var wordCount = stringArray.length-1;
 
     spitLine(stringArray.length, function (sentence) {
-      console.log('Sentence: '+ JSON.stringify(sentence));
-
-      console.log("Received message for user %d and page %d at %d with message: "+messageText,
-      senderID, recipientID, timeOfMessage);
-
       getWordType(lastWord, function(category){
         fillTemplate(sentence, category, function(template) {
           getRhyme(senderID, lastWord, category, template, sendRhymeToUser);
