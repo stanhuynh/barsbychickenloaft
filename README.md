@@ -1,6 +1,7 @@
 # Bars
 
 ![logo](http://i.imgur.com/SDwYrAB.jpg "Logo Title Text 1")
+
 A rapping messenger bot created at Angel Hack Toronto 2016.  
 
 ----------
