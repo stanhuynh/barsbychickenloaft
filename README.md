@@ -1,5 +1,8 @@
 # Bars
 
+[![forthebadge](http://forthebadge.com/images/badges/contains-technical-debt.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
+
 ![logo](http://i.imgur.com/SDwYrAB.jpg "Logo Title Text 1")
 
 A rapping messenger bot created at Angel Hack Toronto 2016.  
